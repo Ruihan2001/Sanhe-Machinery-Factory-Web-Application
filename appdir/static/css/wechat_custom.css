@@ -1,0 +1,13 @@
+.impowerBox .status.status_browser {
+    text-align: center;
+    white-space: nowrap;
+}
+
+div#wx_default_tip p{
+    font-size: 20px !important;
+}
+
+div#wx_default_tip :last-child {
+    display: none;
+}
+

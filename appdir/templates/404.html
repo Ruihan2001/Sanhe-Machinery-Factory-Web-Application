@@ -1,0 +1,292 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>404 PAGE NOT FOUND | SANHE</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/icon.ico') }}"/>
+    <link rel="icon" href="{{ url_for('static',filename='images/icon.ico') }}"/>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/basic.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='plugins/bootstrap/css/bootstrap.min.css') }}"/>
+
+    <style>
+        html {
+            min-height: 100%;
+            height: 100%;
+            padding: 0px;
+            margin: 0px;
+        {#overflow: hidden;#}
+        }
+
+        body {
+            cursor: pointer;
+            overflow: hidden;
+            margin: 0px;
+            background: url(/static/images/banner/banner_32_cover.png);
+            font-weight: normal;
+            font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            color: #000000;
+            overflow-x: hidden;
+            min-height: 100%;
+            height: 100%;
+        }
+
+        body::before {
+            content: ' ';
+            background: url(/static/images/thumb/log1-trans.png) no-repeat center;
+            background-size: 757px 481px;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            z-index: 2;
+        }
+
+        body::after {
+            content: ' ';
+            background: rgba(0, 0, 0, .2);
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            left: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        h3 {
+            -webkit-transform: rotate(-45deg) translateY(-30px);
+            transform: rotate(-45deg) translateY(-30px);
+            color: white;
+            width: 100px;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+
+        .main {
+            margin-top: 75px;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .main .scene {
+            z-index: 1;
+            padding: 0;
+            margin: 0;
+        }
+
+        .main .relative {
+            top: 20px;
+            position: relative;
+            z-index: 13
+        }
+
+        @media (max-width: 1400px) {
+            .main .relative {
+                top: 40px;
+            }
+        }
+
+        @media (max-width: 1322px) {
+            .main .relative {
+                top: 80px;
+            }
+        }
+
+        @media (max-width: 1222px) {
+            .main .relative {
+                top: 120px;
+            }
+        }
+
+        @media (max-width: 1122px) {
+            .main .relative {
+                top: 160px;
+            }
+        }
+
+        @media (max-width: 1022px) {
+            .main .relative {
+                top: 200px;
+            }
+        }
+
+        @media (max-width: 922px) {
+            .main .relative {
+                top: 240px;
+            }
+        }
+
+        @media (max-width: 822px) {
+            .main .relative {
+                top: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main .relative {
+                top: 300px;
+            }
+        }
+
+        @media (max-width: 580px) {
+            .main .relative {
+                top: 365px;
+            }
+        }
+
+
+        .main h2 {
+            color: #fff;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            color: #ffffff;
+        }
+
+        .main .error {
+            color: #fff;
+            font-size: 25vw;
+            text-align: center;
+            font-weight: 700;
+            font-family: sans-serif;
+            z-index: 1;
+            position: relative;
+        }
+
+        .main .btn {
+            border: solid 3px #c7b466;
+            font-size: 18px;
+            font-weight: 900;
+            padding: 18px 65px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+        }
+
+        .main .btn:hover {
+            color: #c7b466;
+        }
+
+        @media (max-width: 768px) {
+            .main .error {
+                font-size: 29vw;
+            }
+
+            .main .btn {
+                padding: 18px 45px;
+            }
+        }
+
+        @media (max-width: 568px) {
+            .main .btn {
+                padding: 18px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+<!-- header -->
+<header class="site-header mo-left transparent-hd header">
+    <!-- main header -->
+    <div class="sticky-header navbar-expand-lg is-fixed">
+        <div class="main-bar clearfix">
+            <div class="container clearfix">
+                <!-- website logo -->
+                <div class="logo-header logo-white">
+                    <a href="/sanhe/index"><img src="/static/images/logo-white.png" alt=""/></a>
+                </div>
+                <!-- nav toggle button -->
+                <button
+                        class="navbar-toggle-button collapsed navbar-icon justify-content-end"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav_Collapse"
+                        aria-controls="navbarNav_Collapse"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <!-- main nav -->
+                <div class="header-nav navbar-collapse collapse justify-content-end" id="navbarNav_Collapse">
+                    <div class="logo-header d-md-block d-lg-none">
+                        <a href="/sanhe/index"><img src="/static/images/logo-black.png" alt=""></a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="\sanhe\index">Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="\sanhe\products">Products
+                            </a>
+                        </li>
+                        <li>
+                            <a href="\blog\index">News</a>
+                        </li>
+                        <li>
+                            <a href="\sanhe\faqs">FAQs</a>
+                        </li>
+                        <li>
+                            <a href="\sanhe\contact">Contact Us<i class="fas fa-chevron-down"></i></a>
+                            <ul class="sub-menu right">
+                                <li><a class="copy-phone" title="click to copy">Wechat:<br/> +86 13559329496</a>
+                                </li>
+                                <li><a class="copy-phone" title="click to copy">WhatsApp:<br/> +86 13559329496</a>
+                                </li>
+                                <li><a><img class="change_img" src="/static/images/contact/wechat_s.jpg"
+                                            alt=""></a></li>
+                                <li><a><img class="change_img" src="/static/images/contact/whatsapp_s.jpg" alt=""></a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main header END -->
+</header>
+<!-- header END -->
+
+<div class="main">
+    <ul id="scene" class="scene"
+        style="transform: translate3d(0px, 0px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: relative;">
+        <li class="layer" data-depth="0.13"
+            style="transform: translate3d(-10.7px, -4.5px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: relative; display: block; left: 0px; top: 0px;">
+            <div class="error">404</div>
+        </li>
+    </ul>
+    <div class="relative">
+        {#        <h2>The page you are looking for doesn't exist.</h2>#}
+        <a class="btn" href="/">Go back to our Homepage</a>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static',filename='js/jquery.min.js') }}" rel="script"></script>
+<script src="{{ url_for('static',filename='plugins/bootstrap/js/bootstrap.bundle.min.js') }}" rel="script"></script>
+
+<script>
+    jQuery('body').on('click', function (e) {
+        window.location.href = "/"
+    });
+</script>
+
+</body>
+</html>

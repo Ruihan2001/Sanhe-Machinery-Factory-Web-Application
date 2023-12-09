@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<!-- BEGIN: Head -->
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/icon.ico') }}"/>
+    <link rel="icon" href="{{ url_for('static',filename='images/icon.ico') }}"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="">
+
+    <title>{{ title }}</title>
+    <!-- BEGIN: CSS Assets-->
+    <link rel="stylesheet" href="../../static/staff/dist/css/app.css"/>
+
+    {% block css %} {% endblock %}
+    <!-- END: CSS Assets-->
+</head>
+<body class="py-5">
+<!-- BEGIN: Mobile Menu -->
+<!-- END: Mobile Menu -->
+<div class="flex mt-[4.7rem] md:mt-0">
+    <!-- BEGIN: Side Menu -->
+    <nav class="side-nav">
+        <a href="\sanhe\index" class="intro-x flex items-center pl-5 pt-4">
+            <img alt="sanhe" class="w-6" src="../../static/images/logo-white.png" style="width: 100%">
+        </a>
+        {#        <a href="\staff\index" class="intro-x flex items-center pl-5 pt-4">#}
+        {#            <img alt="" class="w-6" src="../../static/images/icon.png">#}
+        {#            <span class="hidden xl:block text-white text-lg ml-3"> SANHE </span>#}
+        {#        </a>#}
+        <div class="side-nav__devider my-6"></div>
+        <ul>
+            <li>
+                {% if page== 'dashboard' %}
+                    <a href="\staff\index" class="side-menu side-menu--active">
+                {% else %}
+                    <a href="\staff" class="side-menu">
+                {% endif %}
+                <div class="side-menu__icon"><i data-lucide="home"></i></div>
+                <div class="side-menu__title">
+                    Dashboard
+                </div>
+                </a>
+            </li>
+
+            <li>
+                {% if page=="add_product" or page=="grid_product" %}
+                    <a href="javascript:;" class="side-menu side-menu--active">
+                {% else %}
+                    <a href="javascript:;" class="side-menu">
+                {% endif %}
+                <div class="side-menu__icon"><i data-lucide="shopping-bag"></i></div>
+                <div class="side-menu__title">
+                    Products
+                    <div class="side-menu__sub-icon transform rotate-180">
+                        <i data-lucide="chevron-down"></i></div>
+                </div>
+                </a>
+                <ul class="side-menu__sub-open">
+                    <li>
+                        {% if page== 'grid_product' %}
+                            <a href="\staff\products" class="side-menu side-menu--active">
+                        {% else %}
+                            <a href="\staff\products" class="side-menu">
+                        {% endif %}
+                        <div class="side-menu__icon"><i data-lucide="activity"></i></div>
+                        <div class="side-menu__title">All Product</div>
+                        </a>
+                    </li>
+                    <li>
+                        {% if page== 'add_product' %}
+                            <a href="\staff\add_products" class="side-menu side-menu--active">
+                        {% else %}
+                            <a href="\staff\add_products" class="side-menu">
+                        {% endif %}
+                        <div class="side-menu__icon"><i data-lucide="activity"></i></div>
+                        <div class="side-menu__title"> Add Product</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                {% if page=="post_news" or page=="news" %}
+                    <a href="javascript:;" class="side-menu side-menu--active">
+                {% else %}
+                    <a href="javascript:;" class="side-menu">
+                {% endif %}
+                <div class="side-menu__icon"><i data-lucide="inbox"></i></div>
+                <div class="side-menu__title"> News
+                    <div class="side-menu__sub-icon transform rotate-180">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                             stroke-linejoin="round" icon-name="chevron-down" data-lucide="chevron-down"
+                             class="lucide lucide-chevron-down">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                </a>
+                <ul class="side-menu__sub-open">
+                    <li>
+                        {% if page=="news" %}
+                            <a href="/staff/all_news" class="side-menu side-menu--active">
+                        {% else %}
+                            <a href="/staff/all_news" class="side-menu">
+                        {% endif %}
+                        <div class="side-menu__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" icon-name="activity" data-lucide="activity"
+                                 class="lucide lucide-activity">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="side-menu__title">All News</div>
+                        </a>
+                    </li>
+                    <li>
+                        {% if page=="post_news" %}
+                            <a href="\staff\post_news" class="side-menu side-menu--active">
+                        {% else %}
+                            <a href="\staff\post_news" class="side-menu">
+                        {% endif %}
+                        <div class="side-menu__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" icon-name="activity" data-lucide="activity"
+                                 class="lucide lucide-activity">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="side-menu__title">Post News</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                {% if page=="passed_comements" or page=="blocked_comments" or page=="waiting_audit_commens" %}
+                    <a href="javascript:;" class="side-menu side-menu--active">
+                {% else %}
+                    <a href="javascript:;" class="side-menu">
+                {% endif %}
+                <div class="side-menu__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         icon-name="edit" data-lucide="edit" class="lucide lucide-edit">
+                        <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                </div>
+                <div class="side-menu__title">
+                    Comments
+                    <div class="side-menu__sub-icon transform rotate-180">
+                        <i data-lucide="chevron-down"></i></div>
+                </div>
+                </a>
+                <ul class="side-menu__sub-open">
+                    <li>
+                        {% if page== 'passed_comments' %}
+                            <a href="\staff\passed_comments" class="side-menu side-menu--active">
+                        {% else %}
+                            <a href="\staff\passed_comments" class="side-menu">
+                        {% endif %}
+                        <div class="side-menu__icon"><i data-lucide="activity"></i></div>
+                        <div class="side-menu__title">Passed Comments</div>
+                        </a>
+                    </li>
+                    <li>
+                        {% if page== 'blocked_comments' %}
+                            <a href="\staff\blocked_comments" class="side-menu side-menu--active">
+                        {% else %}
+                            <a href="\staff\blocked_comments" class="side-menu">
+                        {% endif %}
+                        <div class="side-menu__icon"><i data-lucide="activity"></i></div>
+                        <div class="side-menu__title">Blocked Comments</div>
+                        </a>
+                    </li>
+                    <li>
+                        {% if page== 'waiting_audit_comments' %}
+                            <a href="\staff\wait_audit" class="side-menu side-menu--active">
+                        {% else %}
+                            <a href="\staff\wait_audit" class="side-menu">
+                        {% endif %}
+                        <div class="side-menu__icon"><i data-lucide="activity"></i></div>
+                        <div class="side-menu__title">Auditing Comments</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            {#            <li>#}
+            {#                {% if page=="inqury" %}#}
+            {#                    <a href="javascript:;" class="side-menu side-menu--active">#}
+            {#                {% else %}#}
+            {#                    <a href="javascript:;" class="side-menu">#}
+            {#                {% endif %}#}
+            {#                <div class="side-menu__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="edit" data-lucide="edit" class="lucide lucide-edit"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></div>#}
+            {#                <div class="side-menu__title">#}
+            {#                    Inquiry#}
+            {#                    <div class="side-menu__sub-icon transform rotate-180">#}
+            {#                        <i data-lucide="chevron-down"></i></div>#}
+            {#                </div>#}
+            {#                </a>#}
+            {#                <ul class="side-menu__sub-open">#}
+            {#                    <li>#}
+            {#                        {% if page== 'passed_comments' %}#}
+            {#                            <a href="\staff\passed_comments" class="side-menu side-menu--active">#}
+            {#                        {% else %}#}
+            {#                            <a href="\staff\passed_comments" class="side-menu">#}
+            {#                        {% endif %}#}
+            {#                        <div class="side-menu__icon"><i data-lucide="activity"></i></div>#}
+            {#                        <div class="side-menu__title">Passed Comments</div>#}
+            {#                        </a>#}
+            {#                    </li>#}
+            {#                    <li>#}
+            {#                        {% if page== 'blocked_comments' %}#}
+            {#                            <a href="\staff\blocked_comments" class="side-menu side-menu--active">#}
+            {#                        {% else %}#}
+            {#                            <a href="\staff\blocked_comments" class="side-menu">#}
+            {#                        {% endif %}#}
+            {#                        <div class="side-menu__icon"><i data-lucide="activity"></i></div>#}
+            {#                        <div class="side-menu__title">Blocked Comments</div>#}
+            {#                        </a>#}
+            {#                    </li>#}
+            {#                    <li>#}
+            {#                        {% if page== 'waiting_audit_comments' %}#}
+            {#                            <a href="\staff\wait_audit" class="side-menu side-menu--active">#}
+            {#                        {% else %}#}
+            {#                            <a href="\staff\wait_audit" class="side-menu">#}
+            {#                        {% endif %}#}
+            {#                        <div class="side-menu__icon"><i data-lucide="activity"></i></div>#}
+            {#                        <div class="side-menu__title">Auditing Comments</div>#}
+            {#                        </a>#}
+            {#                    </li>#}
+            {#                </ul>#}
+            {#            </li>#}
+            {#            <li>#}
+
+            {#                {% if page=="problem_sets" or page=="add_Q&A" or page=="unanswered" %}#}
+            {#                    <a href="javascript:;" class="side-menu side-menu--active">#}
+            {#                {% else %}#}
+            {#                    <a href="javascript:;" class="side-menu">#}
+            {#                {% endif %}#}
+            {#                <div class="side-menu__icon"><i data-lucide="message-square"></i></div>#}
+            {#                <div class="side-menu__title"> AI Chat#}
+            {#                    <div class="side-menu__sub-icon transform rotate-180">#}
+            {#                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"#}
+            {#                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"#}
+            {#                             stroke-linejoin="round" icon-name="chevron-down" data-lucide="chevron-down"#}
+            {#                             class="lucide lucide-chevron-down">#}
+            {#                            <polyline points="6 9 12 15 18 9"></polyline>#}
+            {#                        </svg>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#                </a>#}
+            {#                <ul class="side-menu__sub-open">#}
+            {#                    <li>#}
+            {#                        {% if page=="problem_sets" %}#}
+            {#                            <a href="index.html" class="side-menu side-menu--active">#}
+            {#                        {% else %}#}
+            {#                            <a href="index.html" class="side-menu">#}
+            {#                        {% endif %}#}
+            {#                        <div class="side-menu__icon">#}
+            {#                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"#}
+            {#                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"#}
+            {#                                 stroke-linejoin="round" icon-name="activity" data-lucide="activity"#}
+            {#                                 class="lucide lucide-activity">#}
+            {#                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>#}
+            {#                            </svg>#}
+            {#                        </div>#}
+            {#                        <div class="side-menu__title">Problem Sets</div>#}
+            {#                        </a>#}
+            {#                    </li>#}
+            {#                    <li>#}
+            {#                        {% if page=="add_Q&A" %}#}
+            {#                            <a href="simple-menu-light-dashboard-overview-1.html" class="side-menu side-menu--active">#}
+            {#                        {% else %}#}
+            {#                            <a href="simple-menu-light-dashboard-overview-1.html" class="side-menu">#}
+            {#                        {% endif %}#}
+            {#                        <div class="side-menu__icon">#}
+            {#                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"#}
+            {#                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"#}
+            {#                                 stroke-linejoin="round" icon-name="activity" data-lucide="activity"#}
+            {#                                 class="lucide lucide-activity">#}
+            {#                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>#}
+            {#                            </svg>#}
+            {#                        </div>#}
+            {#                        <div class="side-menu__title">Add Q&A</div>#}
+            {#                        </a>#}
+            {#                    </li>#}
+            {#                    <li>#}
+            {#                        {% if page=="unanswered" %}#}
+            {#                            <a href="simple-menu-light-dashboard-overview-1.html" class="side-menu side-menu--active">#}
+            {#                        {% else %}#}
+            {#                            <a href="simple-menu-light-dashboard-overview-1.html" class="side-menu">#}
+            {#                        {% endif %}#}
+            {#                        <div class="side-menu__icon">#}
+            {#                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"#}
+            {#                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"#}
+            {#                                 stroke-linejoin="round" icon-name="activity" data-lucide="activity"#}
+            {#                                 class="lucide lucide-activity">#}
+            {#                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>#}
+            {#                            </svg>#}
+            {#                        </div>#}
+            {#                        <div class="side-menu__title">Unanswered Query</div>#}
+            {#                        </a>#}
+            {#                    </li>#}
+            {#                </ul>#}
+            {#            </li>#}
+    </nav>
+    <!-- END: Side Menu -->
+    <!-- BEGIN: Content -->
+
+    {% block content %}
+
+
+    {% endblock %}
+    <!-- END: Content -->
+</div>
+<!-- BEGIN: Dark Mode Switcher-->
+<!-- END: Dark Mode Switcher-->
+
+<!-- BEGIN: JS Assets-->
+{#        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>#}
+{#        <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>#}
+
+<script>
+    var button_status = 0;
+</script>
+<script src="../../static/staff/dist/js/app.js"></script>
+
+<script src="{{ url_for('static',filename='js/jquery.min.js') }}" rel="script"></script>
+
+{% block script %} {% endblock %}
+<!-- END: JS Assets-->
+</body>
+</html>

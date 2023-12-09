@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='full_screen/style.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='plugins/fontawesome/css/all.min.css') }}"/>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/icon.ico') }}"/>
+    <link rel="icon" href="{{ url_for('static',filename='images/icon.ico') }}"/>
+    <title>新闻 ｜ 三和</title>
+    <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<header>
+    <a href="/sanhe/index" class="brand">
+        <img src="/static/images/logo-white.png" alt="" style="height: 30px;"/>
+    </a>
+    <div class="menu-btn"></div>
+    <div class="navigation">
+        <div class="navigation-items">
+            <a href="/sanhe/index_zh-cn">首页</a>
+            <a href="/sanhe/products_zh-cn">产品</a>
+            <a>
+                <svg class="change_language lang_zh" xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 640 512"
+                     onclick="changeLanguage()" style="fill:white;height: 20px;">
+                    <path d="M0 128C0 92.7 28.7 64 64 64H256h48 16H576c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H320 304 256 64c-35.3 0-64-28.7-64-64V128zm320 0V384H576V128H320zM178.3 175.9c-3.2-7.2-10.4-11.9-18.3-11.9s-15.1 4.7-18.3 11.9l-64 144c-4.5 10.1 .1 21.9 10.2 26.4s21.9-.1 26.4-10.2l8.9-20.1h73.6l8.9 20.1c4.5 10.1 16.3 14.6 26.4 10.2s14.6-16.3 10.2-26.4l-64-144zM160 233.2L179 276H141l19-42.8zM448 164c11 0 20 9 20 20v4h44 16c11 0 20 9 20 20s-9 20-20 20h-2l-1.6 4.5c-8.9 24.4-22.4 46.6-39.6 65.4c.9 .6 1.8 1.1 2.7 1.6l18.9 11.3c9.5 5.7 12.5 18 6.9 27.4s-18 12.5-27.4 6.9l-18.9-11.3c-4.5-2.7-8.8-5.5-13.1-8.5c-10.6 7.5-21.9 14-34 19.4l-3.6 1.6c-10.1 4.5-21.9-.1-26.4-10.2s.1-21.9 10.2-26.4l3.6-1.6c6.4-2.9 12.6-6.1 18.5-9.8l-12.2-12.2c-7.8-7.8-7.8-20.5 0-28.3s20.5-7.8 28.3 0l14.6 14.6 .5 .5c12.4-13.1 22.5-28.3 29.8-45H448 376c-11 0-20-9-20-20s9-20 20-20h52v-4c0-11 9-20 20-20z"/>
+                </svg>
+            </a>
+        </div>
+
+    </div>
+</header>
+<section class="home">
+    <video class="video-slide active" src="../static/images/banner/banner_2040_24s.mp4" autoplay muted loop></video>
+    <video class="video-slide" src="../static/images/banner/banner_32_10s.mp4" autoplay muted loop></video>
+
+    <div class="content active">
+        <h1>为什么选择我们？</h1>
+        <p>
+            公司位于风景秀丽的武夷山下的建阳区，占地30亩，是一家专业生产橱柜板、细木工板、
+            胶合板等机械设备用于木工行业，具有数十年的优秀技术。利用现代先进的自动化技术进行更新和完善产品，使产品专业化、系列化。
+            <br/> <br/>
+            公司主导产品;原木框锯机，方料框锯机，重型框锯自动化生产线--胚料输送机、分料机、进料机、重型框锯机、出料机、板材输送机、板材提升机、木屑刮板机等几十种木工机床。
+            <br/> <br/>
+            以质量求生存、以创新求发展。 “三和机械”公司作为您可靠的合作伙伴，将一如既往地为您提供高品质的产品和完善的售后服务。
+        </p>
+    </div>
+
+    <div class="content">
+        <h1>我们为谁服务？</h1>
+        <p>
+            几十年来公司产品质量稳定、价格合理、守信合同，售后服务及时周到取得良好信誉，产品已销国内山东、浙江、贵州、云南、湖南、江西等拾多个省和马来西亚、越南、俄罗斯等国家，取得了良好的经济和社会效益。
+        </p>
+    </div>
+
+    <div class="media-icons">
+        <a href="https://www.youtube.com/@sanhe_machinery/videos"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100087678476851"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/SanHe_Machinery"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <div class="slider-navigation">
+        <div class="nav-btn active"></div>
+        <div class="nav-btn"></div>
+    </div>
+</section>
+
+<script>
+    const menuBtn = document.querySelector(".menu-btn")
+    const navigation = document.querySelector(".navigation")
+
+    menuBtn.addEventListener("click", () => {
+        menuBtn.classList.toggle("active");
+        navigation.classList.toggle("active");
+    });
+
+
+    const btns = document.querySelectorAll(".nav-btn")
+    const slides = document.querySelectorAll(".video-slide")
+    const contents = document.querySelectorAll(".content")
+
+    var sliderNav = function (manual) {
+        btns.forEach((btn) => {
+            btn.classList.remove("active")
+
+        })
+
+        slides.forEach((slide) => {
+            slide.classList.remove("active")
+        })
+
+        contents.forEach((content) => {
+            content.classList.remove("active")
+        })
+
+        btns[manual].classList.add("active")
+        slides[manual].classList.add("active")
+        contents[manual].classList.add("active")
+
+    }
+
+    btns.forEach((btn, i) => {
+        btn.addEventListener("click", () => {
+            sliderNav(i)
+        })
+    });
+
+    function changeLanguage() {
+        let language = "{{ language }}";
+        let target = language === "en" ? "_zh-cn" : ""
+        window.location.href = '/sanhe/news' + target;
+    }
+
+</script>
+
+</body>
+</html>

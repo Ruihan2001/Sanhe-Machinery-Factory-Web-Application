@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/icon.ico') }}"/>
+    <link rel="icon" href="{{ url_for('static',filename='images/icon.ico') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style_login.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='plugins/fontawesome/css/all.min.css') }}"/>
+
+    {#    <link rel="stylesheet" href="{{ url_for('static',filename='css/plugins.css') }}"/>#}
+    <title>EMAIL BIND | SANHE </title>
+    <meta name="robots" content="noindex, nofollow">
+
+</head>
+
+<body>
+<div class="shell" style="width: 600px;min-width: 600px;">
+    <div class="container b-container" id="b-container">
+        <img class="container_header" src="/static/images/logo-black.png" alt=""/>
+        <div class="weixin-window hidden">
+            <i class="weixin-window-close fas fa-times"></i>
+        </div>
+        <div id="weixin-signup-qrcode" class="weixin-window hidden"></div>
+        <form action="" method="" class="form" id="a-form">
+            <h2 class="form_title title">Bind Email for Account</h2>
+            {#            <div class="form_icons">#}
+            {#                <i class="icon fab fa-weixin weixin-signup"></i>#}
+            {#            </div>#}
+            <span class="form_span" style="margin-bottom: 20px; margin-top:0">After confirming your email, you will receive the newest news of our company</span>
+            <input type="text" class="form_input" placeholder="Email" name="email">
+            <div class="input-group-addon" style="cursor: pointer;font-size: 15px" id="captcha-btn">Get Verification
+                Code
+            </div>
+            <input type="password" class="form_input" name="userpw" placeholder="Password">
+            <input type="password" class="form_input" placeholder="Retype Password">
+            <input type="text" class="form_input" placeholder="Verification Code" name="captcha">
+            <button class="form_button button submit" id="submit">SUBMIT</button>
+        </form>
+    </div>
+
+    {#    <div class="switch" id="switch-cnt">#}
+    {#        <div class="switch_circle"></div>#}
+    {#        <div class="switch_circle switch_circle-t"></div>#}
+    {#        <img class="switch_background" src="/static/images/icon.png" alt=""/>#}
+    {#        <div class="switch_container" id="switch-c1">#}
+    {#            <h2 class="switch_title title" style="letter-spacing: 0;">Bind Email</h2>#}
+    {#            <p class="switch_description description">After confirming your email, you will receive the newest news of our company</p>#}
+    {#        </div>#}
+    {#    </div>#}
+</div>
+</body>
+<script src="{{ url_for('static',filename='js/messages.js') }}" rel="script"></script>
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURIComponent(r[2]);
+        return null;
+    }
+
+    if (getQueryString("extra_info")) {
+        let info = getQueryString("extra_info").replaceAll("+", " ");
+        let messageComponent = new messageControl();
+        messageComponent.message({type: 'error', content: info});
+    }
+
+</script>
+
+<script src="{{ url_for('static',filename='js/sweetalert.min.js') }}" rel="script"></script>
+<script src="{{ url_for('static',filename='js/jquery.min.js') }}" rel="script"></script>
+<script src="{{ url_for('static',filename='js/bind_email.js') }}" rel="script"></script>
+<script>
+    {#var formData = {#}
+    {#    email:'',#}
+    {##}
+    {#//input事件：输入框变化时，判断是否需要改变提交按钮的可用与否状态s#}
+    {#$('input').on('input', function(){#}
+    {#    var email = $(this).data('email');#}
+    {#    var oldValue = formData[email];#}
+    {#    var newValue = $(this).val();#}
+    {#    formData[email] = newValue;#}
+    {#    if(!(oldValue && newValue)){ //1.之前无值现在有值 2.之前有值现在删除了#}
+    {#        $('#captcha-btn').attr("disabled", isFormReady());#}
+    {#    }#}
+    {##}
+    {#//遍历formData，当formData中字段有未填项则按钮不可点击#}
+    {#function isFormReady(){#}
+    {#    for (let i in formData) {#}
+    {#        if (!formData[i]) return true#}
+    {#    }#}
+    {#    return false#}
+    {##}
+
+    let switchCtn = document.querySelector("#switch-cnt");
+    let switchC1 = document.querySelector("#switch-c1");
+    let switchC2 = document.querySelector("#switch-c2");
+    let switchCircle = document.querySelectorAll(".switch_circle");
+    let switchBtn = document.querySelectorAll(".switch-btn");
+    let aContainer = document.querySelector("#a-container");
+    let bContainer = document.querySelector("#b-container");
+    let allButtons = document.querySelectorAll(".submit");
+
+    let getButtons = (e) => e.preventDefault()
+    let changeForm = (e) => {
+        // 修改类名
+        switchCtn.classList.add("is-gx");
+        setTimeout(function () {
+            switchCtn.classList.remove("is-gx");
+        }, 1500)
+        switchCtn.classList.toggle("is-txr");
+        switchCircle[0].classList.toggle("is-txr");
+        switchCircle[1].classList.toggle("is-txr");
+
+        switchC1.classList.toggle("is-hidden");
+        switchC2.classList.toggle("is-hidden");
+        aContainer.classList.toggle("is-txl");
+        bContainer.classList.toggle("is-txl");
+        bContainer.classList.toggle("is-z");
+    }
+    // 点击切换
+    let shell = (e) => {
+        for (var i = 0; i < allButtons.length; i++)
+            allButtons[i].addEventListener("click", getButtons);
+        for (var i = 0; i < switchBtn.length; i++)
+            switchBtn[i].addEventListener("click", changeForm)
+    }
+    window.addEventListener("load", shell);
+</script>
+<script src="{{ url_for('static',filename='js/js_login.js') }}" rel="script"></script>
+</html>

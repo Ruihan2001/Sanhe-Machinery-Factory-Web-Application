@@ -1,0 +1,850 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>NEWS | SanHe</title>
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/icon.ico') }}"/>
+    <link rel="icon" href="{{ url_for('static',filename='images/icon.ico') }}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="../static/news/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/news/css/animate.min.css">
+    <link rel="stylesheet" href="../static/news/css/magnific-popup.css">
+    <link rel="stylesheet" href="../static/news/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="../static/news/font-flaticon/flaticon.css">
+    <link rel="stylesheet" href="../static/news/css/dripicons.css">
+    <link rel="stylesheet" href="../static/news/css/slick.css">
+    <link rel="stylesheet" href="../static/news/css/meanmenu.css">
+    <link rel="stylesheet" href="../static/news/css/default.css">
+    <link rel="stylesheet" href="../static/news/css/style.css">
+    <link rel="stylesheet" href="../static/news/css/style_new.css">
+    <link rel="stylesheet" href="../static/news/css/responsive.css">
+</head>
+<body>
+
+<!-- header -->
+<header class="header-area header-area2">
+    <div class="header-top second-header d-none d-lg-block" style="display: none !important">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6 d-none  d-md-block">
+                    <div class="header-cta">
+                        <div class="row">
+                            <div class="col-lg-3"><a href="#" class="h-btn"><span class="icon"><img
+                                    src="../static/news/img/icon/top-trending-icon.png"
+                                    alt="courses-img1"></span>Hot</a></div>
+                            <div class="col-lg-9">
+                                <div class="trending-slider-active">
+                                    <span>SANHE JIXIE is leading a new mahcine type</span>
+                                    <span>How to produce a wonderful machine</span>
+                                    <span>There are new machines these days</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 d-none d-lg-block text-right">
+                    <i class="fal fa-cloud-sun">19°c Beijing</i>
+                </div>
+                <div class="col-lg-3 col-md-3 d-none d-lg-block">
+                    <a href="#" class="top-btn"><i class="fal fa-calendar-alt"></i> Friday, 31 March, 2023</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="header-sticky" class="menu-area">
+        <div class="container">
+            <div class="second-menu">
+                <div class="row align-items-center">
+                    <div class="col-xl-2 col-lg-2">
+                        <div class="logo-header logo-white">
+                            <a href="/sanhe/index"><img src="/static/images/logo-black.png" alt=""/></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+
+                        <div class="main-menu text-right text-xl-right">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li class="sub">
+                                        <a href="\sanhe\index">Home</a>
+
+                                    </li>
+                                    <li><a href="\sanhe\products">Products</a></li>
+
+                                    <li class="sub">
+                                        <a href="\blog\index">News</a>
+
+                                    </li>
+                                    {#                                            <li class="sub"><a href="#">Pages</a>#}
+                                    {#												<ul>#}
+                                    {#                                                    <li><a href="\blog\projects">Gallery</a></li>#}
+                                    {#													<li><a href="\blog\projects_detail">Gallery Details</a></li>#}
+                                    {#													<li><a href="\blog\price">Pricing</a></li>#}
+                                    {#													<li><a href="\blog\team">Team</a></li>#}
+                                    {#													<li><a href="\blog\faq">Faq</a></li>#}
+                                    {#                                                    #}
+                                    {#												</ul>#}
+                                    {#											</li>#}
+                                    <li class="sub">
+                                        <a href="\sanhe\faqs">FAQs</a>
+                                    </li>
+                                    <li><a href="\sanhe\contact">Contact Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-2 col-lg-3 d-none d-lg-block mt-20 mb-20">
+                        <div class="header-social text-right">
+                            <span>
+                                {% if user %}
+                                    <img class="user-pic"
+                                         onclick="window.location.href='/sanhe/user/profile/{{ user.unionid }}'"
+                                         src="{{ user.headimgurl }}">
+                                {% else %}
+                                    <img class="user-pic"
+                                         onclick="window.location.href='/sanhe/auth/login'"
+                                         src="/static/images/avatar/unlogged.png">
+                                {% endif %}
+                                {#                                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>#}
+{#                                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>#}
+{#                                <a href="#" class="menu-tigger"><i class="fas fa-search"></i></a#}
+                            </span>
+                            <!--  /social media icon redux -->
+                        </div>
+
+                    </div>
+
+                    <div class="col-12">
+                        <div class="mobile-menu"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header-end -->
+
+<!-- main-area -->
+<main>
+
+    <!-- slider-area -->
+    <section class="courses-area fix">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+
+                    <div class="featured-post-slider-active">
+
+                        {% for r in blog_show %}
+                            {% if r.id<=4 %}
+                                <div class="box-slider-post hover-zoomin">
+                                    <a href="\blog\blog_details\{{ r.id }}" class="img-s">
+                                        <img src="{{ r.blog_image_route }}" alt="courses-img1"></a>
+
+                                    <div class="text">
+                                        <div class="post-tags">
+                                            <ul>
+                                                <li><a href="#" class="c-btn">{{ r.blog_category }}</a></li>
+                                                <li><a href="#"><span class="icon"><img
+                                                        src="../static/news/img/icon/ps-1.png"
+                                                        alt="courses-img1"></span> Trending</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <h3><a href="\blog\blog_details\{{ r.id }}">{{ r.blog_title }}</a></h3>
+
+                                        <div class="post-tags mt-20">
+                                            <ul>
+
+                                                <li><a href="#"><span class="icon"><i
+                                                        class="fal fa-user-crown"></i></span>{{ r.author }}</a></li>
+                                                <li><a href="#"><span class="icon"><i
+                                                        class="fal fa-clock"></i></span>{{ r.blog_time }}</a></li>
+                                                <li><a href="#"><span class="icon"><i
+                                                        class="fal fa-comment"></i></span>{{ r.comment_number }}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- slider-area-end -->
+
+    <!-- featured-post-area -->
+    <section id="services" class="services-area pt-90 pb-90 fix">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title mb-50">
+                        <h2>
+                            Corporation news
+                        </h2>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-title text-right mt-10">
+                        <a href="\blog\all?type=corporation">See All Posts <i class="fal fa-long-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for c in cor_blogs[:3] %}
+                    <div class="col-lg-4 col-md-12">
+
+                        <div class="fp-box wow fadeInUp animated hover-zoomin" data-delay=".4s">
+                            <div class="img ">
+                                <div class="cat">Corporation</div>
+                                <img src="{{ c.blog_image_route }}" alt="icon01">
+                            </div>
+                            <div class="text" style="height: 180px;">
+                                <h5><a href="\blog\blog_details\{{ c.id }}"
+                                       style="overflow: hidden;text-overflow:ellipsis;display: -webkit-box;-webkit-line-clamp:2 ;-webkit-box-orient: vertical">{{ c.blog_title }}</a>
+                                </h5>
+                                <div class="post-tags mt-20">
+                                    <ul>
+                                        <li><a href="#"><span class="icon"><i
+                                                class="fal fa-user-crown"></i></span> {{ c.author }}</a></li>
+                                        <li><a href="#"><span class="icon"><i
+                                                class="fal fa-clock"></i></span>{{ c.blog_time }}</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+    <section class="fv-post-area  pt-90  pb-90 fix" style="background: #010e2e;">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title mb-50">
+                        <h2>
+                            Wood industry news
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="section-title text-right mt-10">
+                        <a href="\blog\all?type=wood">See All Posts <i class="fal fa-long-arrow-right"></i></a>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-lg-4 col-md-12">
+
+                    <div class="fv-box wow fadeInUp animated mb-30" data-delay=".4s">
+                        <div class="img ">
+                            <div class="cat">WOOD</div>
+                            <img src="{{ wood_blogs[0].blog_image_route }}" alt="icon01" style="width: 100%;">
+                        </div>
+
+                        <div class="text">
+                            <h5><a href="\blog\blog_details\{{ wood_blogs[0].id }}"
+                                   style="overflow: hidden;text-overflow:ellipsis;display: -webkit-box;-webkit-line-clamp:2 ;-webkit-box-orient: vertical">{{ wood_blogs[0].blog_title }}</a>
+                            </h5>
+                            <div class="post-tags mt-20">
+                                <ul>
+                                    <li><a href="#"><span class="icon"><i
+                                            class="fal fa-user-crown"></i></span> {{ wood_blogs[0].author }}</a></li>
+                                    <li><a href="#"><span class="icon"><i
+                                            class="fal fa-clock"></i></span>{{ wood_blogs[0].blog_time }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fv-box wow fadeInUp animated mb-30" data-delay=".4s">
+                        <div class="img ">
+                            <div class="cat">WOOD</div>
+                            <img src="{{ wood_blogs[1].blog_image_route }}" alt="icon01" style="width: 100%;">
+                        </div>
+                        <div class="text">
+                            <h5><a href="\blog\blog_details\{{ wood_blogs[1].id }}"
+                                   style="overflow: hidden;text-overflow:ellipsis;display: -webkit-box;-webkit-line-clamp:2 ;-webkit-box-orient: vertical">{{ wood_blogs[1].blog_title }}</a>
+                            </h5>
+                            <div class="post-tags mt-20">
+                                <ul>
+                                    <li><a href="#"><span class="icon"><i
+                                            class="fal fa-user-crown"></i></span> {{ wood_blogs[1].author }}</a></li>
+                                    <li><a href="#"><span class="icon"><i
+                                            class="fal fa-clock"></i></span>{{ wood_blogs[1].blog_time }}</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-8 col-md-12">
+                    <div class="fv-box fv-box2 wow fadeInUp animated mb-30" data-delay=".4s"
+                         style="height: 495px;">
+                        <div class="img" style="height: 485px;">
+                            <div class="cat">WOOD</div>
+                            <img src="{{ wood_blogs[2].blog_image_route }}" alt="icon01" style="width: 100%;">
+                        </div>
+                        <div class="text">
+                            <h5><a href="\blog\blog_details\{{ wood_blogs[2].id }}"
+                                   style="overflow: hidden;text-overflow:ellipsis;display: -webkit-box;-webkit-line-clamp:2 ;-webkit-box-orient: vertical">{{ wood_blogs[2].blog_title }}</a>
+                            </h5>
+                            <div class="post-tags mt-20">
+                                <ul>
+                                    <li><a href="#"><span class="icon"><i
+                                            class="fal fa-user-crown"></i></span> {{ wood_blogs[2].author }}</a></li>
+                                    <li><a href="#"><span class="icon"><i
+                                            class="fal fa-clock"></i></span> {{ wood_blogs[2].blog_time }}</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <!-- feature-vedio-post-area-end -->
+    <!-- top-post-post-area -->
+    <section class="top-store-post-area pt-90 pb-60 fix" style="background: #f3f8fb;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="section-title mb-50">
+                                <h2>
+                                    Blogs Sharing
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="section-title text-right mt-10">
+                                <a href="\blog\all?type=sharing">See All Posts <i
+                                        class="fal fa-long-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% if shar_blogs | count == 0 %}
+                            <div>
+                                No this kind of new right now.
+                            </div>
+                        {% elif shar_blogs | count < 4 %}
+                            {% for b in shar_blogs %}
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="tps-box wow fadeInUp animated hover-zoomin mb-30" data-delay=".4s">
+                                        <div class="img ">
+                                            <div class="cat">Sharing</div>
+                                            <img src="{{ b.blog_image_route }}" alt="icon01">
+                                        </div>
+                                        <div class="text">
+                                            <h5><a href="\blog\blog_details\{{ b.id }}"
+                                                   style="overflow: hidden;text-overflow:ellipsis;display: -webkit-box;-webkit-line-clamp:2 ;-webkit-box-orient: vertical">{{ b.blog_title }}</a>
+                                            </h5>
+                                            <div style="overflow: hidden;text-overflow:ellipsis;display: -webkit-box;-webkit-line-clamp:3 ;-webkit-box-orient: vertical">
+                                                <p>{{ b.blog_content }}</p></div>
+                                            <div class="post-tags mt-20">
+                                                <ul>
+                                                    <li><span class="icon"><i
+                                                            class="fal fa-user-crown"> {{ b.author }}</i></span>
+                                                    </li>
+                                                    <li><span class="icon"><i
+                                                            class="fal fa-clock">{{ b.blog_time }}</i></span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            {% for b in shar_blogs[:4] %}
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="tps-box wow fadeInUp animated hover-zoomin mb-30" data-delay=".4s">
+                                        <div class="img ">
+                                            <div class="cat">Sharing</div>
+                                            <img src="{{ b.blog_image_route }}" alt="icon01">
+                                        </div>
+                                        <div class="text">
+                                            <h5><a href="\blog\blog_details\{{ b.id }}"
+                                                   style="overflow: hidden;text-overflow:ellipsis;display: -webkit-box;-webkit-line-clamp:2 ;-webkit-box-orient: vertical">{{ b.blog_title }}</a>
+                                            </h5>
+                                            <div style="overflow: hidden;text-overflow:ellipsis;display: -webkit-box;-webkit-line-clamp:3 ;-webkit-box-orient: vertical">
+                                                <p>{{ b.blog_content }}</p></div>
+                                            <div class="post-tags mt-20">
+                                                <ul>
+                                                    <li><span class="icon"><i
+                                                            class="fal fa-user-crown"> {{ b.author }}</i></span>
+                                                    </li>
+                                                    <li><span class="icon"><i
+                                                            class="fal fa-clock">{{ b.blog_time }}</i></span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                </div>
+
+                <div class="col-sm-12 col-md-12 col-lg-4">
+                    <aside class="sidebar-top-post">
+                        <section id="custom_html-5" class="widget_text widget widget_custom_html mb-30">
+                            <h2 class="widget-title">Social Link</h2>
+                            <div class="textwidget custom-html-widget">
+                                <div class="widget-social">
+                                    <a href="https://www.facebook.com/profile.php?id=100087678476851"><i
+                                            class="fab fa-facebook-f"></i> </a>
+                                    <a href="https://www.instagram.com/sanhe_machinery/"><i
+                                            class="fab fa-instagram"> </i></a>
+                                    <a href="https://twitter.com/SanHe_Machinery"><i class="fab fa-twitter"></i> </a>
+                                    <a href="https://www.youtube.com/@sanhe_machinery/videos"><i
+                                            class="fab fa-youtube"></i> </a>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="tags-store mb-30">
+                            <h2>Tags</h2>
+                            <a href="/blog/all?type=wood">Wood</a>
+                            <a href="/blog/all?type=sharing">Sharing</a>
+                            <a href="/blog/all?type=corporation">Corporation</a>
+                        </section>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- top-Stories-post-area-end -->
+
+
+    <!-- recent-post-area -->
+    {#            <section class="recent-post-area pt-90 pb-60 fix">#}
+    {#                <div class="container">#}
+    {#                      <div class="row">   #}
+    {#                    <div class="col-sm-12 col-md-12 col-lg-8">#}
+    {#                    <div class="row">   #}
+    {#                        <div class="col-lg-12">#}
+    {#                            <div class="section-title mb-50">#}
+    {#                                <h2>#}
+    {#                             Recent Posts#}
+    {#                                </h2>#}
+    {#                               #}
+    {#                            </div>#}
+    {#                           #}
+    {#                        </div>#}
+    {#                        #}
+    {#                         #}
+    {#                    </div>#}
+    {#                        <div class="row">#}
+    {#                            #}
+    {#                         <div class="col-lg-12 col-md-12">#}
+    {#                             <div class="rp-box wow fadeInUp animated hover-zoomin mb-30"  data-delay=".4s">#}
+    {#                              <div class="img ">#}
+    {#                                  #}
+    {#                                   <img src="../static/news/img/blog/food/fd-1.jpg" alt="icon01">#}
+    {#                                </div>#}
+    {#                               <div class="text">#}
+    {#                                   <div class="cat">FOOD</div>#}
+    {#                                    <h5><a href="blog-details.html">Quick  Simple  and Downright Comforting Dishes for Busy Weeknights</a></h5>   #}
+    {#                                   <p>Integer nibh libero, luctus id dolor vel, euismod volutpat dolor. Suspendisse dignissim id arcu ut sollicitudin.</p>#}
+    {#                                   <div class="post-tags mt-10">#}
+    {#                                            <ul>#}
+    {#                                                 <li><a href="#"><span class="icon"><i class="fal fa-user-crown"></i></span> Johen Doe</a></li>#}
+    {#                                                 <li><a href="#"><span class="icon"><i class="fal fa-clock"></i></span> 12 March, 2021</a></li>#}
+    {#                                            </ul>#}
+    {#                                        </div>#}
+    {#                                </div>#}
+    {#                            </div>   #}
+    {#                             #}
+    {#                         #}
+    {#                        </div>#}
+    {#                             <div class="col-lg-12 col-md-12">#}
+    {#                             <div class="rp-box wow fadeInUp animated hover-zoomin mb-30"  data-delay=".4s">#}
+    {#                              <div class="img ">#}
+    {#                                  #}
+    {#                                   <img src="../static/news/img/blog/lifestyle/lf-7.jpg" alt="icon01">#}
+    {#                                </div>#}
+    {#                               <div class="text">#}
+    {#                                   <div class="cat">LIFE STYLE</div>#}
+    {#                                    <h5><a href="blog-details.html">Make a beauty selfie 2020: new life to go, a short the story across the world</a></h5>   #}
+    {#                                   <p>Integer nibh libero, luctus id dolor vel, euismod volutpat dolor. Suspendisse dignissim id arcu ut sollicitudin.</p>#}
+    {#                                   <div class="post-tags mt-10">#}
+    {#                                            <ul>#}
+    {#                                                 <li><a href="#"><span class="icon"><i class="fal fa-user-crown"></i></span> Johen Doe</a></li>#}
+    {#                                                 <li><a href="#"><span class="icon"><i class="fal fa-clock"></i></span> 12 March, 2021</a></li>#}
+    {#                                            </ul>#}
+    {#                                        </div>#}
+    {#                                </div>#}
+    {#                            </div>   #}
+    {#                             #}
+    {#                         #}
+    {#                        </div>#}
+    {#                             <div class="col-lg-12 col-md-12">#}
+    {#                             <div class="rp-box wow fadeInUp animated hover-zoomin mb-30"  data-delay=".4s">#}
+    {#                              <div class="img ">#}
+    {#                                  #}
+    {#                                   <img src="../static/news/img/blog/gaming/gm-05.jpg" alt="icon01">#}
+    {#                                </div>#}
+    {#                               <div class="text">#}
+    {#                                   <div class="cat">GAMING</div>#}
+    {#                                    <h5><a href="blog-details.html">New game studios pop up all the time and they’re always looking</a></h5>   #}
+    {#                                   <p>Integer nibh libero, luctus id dolor vel, euismod volutpat dolor. Suspendisse dignissim id arcu ut sollicitudin.</p>#}
+    {#                                   <div class="post-tags mt-10">#}
+    {#                                            <ul>#}
+    {#                                                 <li><a href="#"><span class="icon"><i class="fal fa-user-crown"></i></span> Johen Doe</a></li>#}
+    {#                                                 <li><a href="#"><span class="icon"><i class="fal fa-clock"></i></span> 12 March, 2021</a></li>#}
+    {#                                            </ul>#}
+    {#                                        </div>#}
+    {#                                </div>#}
+    {#                            </div>   #}
+    {#                             #}
+    {#                         #}
+    {#                        </div>#}
+    {#                         #}
+    {#                        #}
+    {#                    </div>#}
+    {#                    #}
+    {#                    </div>#}
+    {##}
+    {#                    <div class="col-sm-12 col-md-12 col-lg-4">#}
+    {#                       <aside class="sidebar-top-post">#}
+    {#                           <section class="ad-bnner mb-30">#}
+    {#                                <img src="../static/news/img/blog/ad-banner.png" alt="email-s"/>#}
+    {#                              #}
+    {#                           </section>#}
+    {#                       #}
+    {#                           <section class="most-loved mb-30">#}
+    {#                               <h2>Most Loved</h2>#}
+    {#                                <img src="../static/news/img/blog/most-loved.png" alt="email-s" class="mb-15"/>#}
+    {#                               <h4>It’s Great the Government is Tightening Gambling</h4>#}
+    {#                           </section>#}
+    {#                             #}
+    {#                        </aside>#}
+    {#                    #}
+    {#                </div>#}
+    {#                </div>#}
+    {#                </div>#}
+    {#            </section>#}
+    <!-- recent-post-area-end -->
+
+
+    <!-- editor-choice -->
+    {#            <section id="editor-choice" class="editor-choice-area pt-90 pb-60 fix" style="background: #f3f8fb;" >#}
+    {#                <div class="container">#}
+    {#                    <div class="row">   #}
+    {#                        <div class="col-lg-12">#}
+    {#                            <div class="section-title center-align mb-50">#}
+    {#                                 #}
+    {#                                <h2>#}
+    {#                                    Editor Choice#}
+    {#                                </h2>#}
+    {#                             #}
+    {#                            </div>#}
+    {#                           #}
+    {#                        </div>#}
+    {#                         #}
+    {#                    </div>#}
+    {#                    <div class="row home-blog-active">#}
+    {#                        <div class="col-lg-4 col-md-12">#}
+    {#                             #}
+    {#                          <div class="fp-box wow fadeInUp animated hover-zoomin mb-30"  data-delay=".4s">#}
+    {#                              <div class="img ">#}
+    {#                                  <div class="cat">LIFE STYLE</div>#}
+    {#                                   <img src="../static/news/img/blog/lifestyle/lf-1.jpg" alt="icon01">#}
+    {#                                </div>#}
+    {#                               <div class="text">#}
+    {#                                    <h5><a href="blog-details.html">Guide to Picking the Best Travel Card</a></h5>   #}
+    {#                                   <div class="post-tags mt-20">#}
+    {#                                            <ul>#}
+    {#                                                 <li><a href="#"><span class="icon"><i class="fal fa-user-crown"></i></span> Johen Doe</a></li>#}
+    {#                                                 <li><a href="#"><span class="icon"><i class="fal fa-clock"></i></span> 12 March, 2021</a></li>#}
+    {#                                               #}
+    {#                                            </ul>#}
+    {#                                        </div>#}
+    {#                                </div>#}
+    {#                            </div>   #}
+    {#                             #}
+    {#                         #}
+    {#                        </div>#}
+    {#                         <div class="col-lg-4 col-md-12">#}
+    {#                             #}
+    {#                          <div class="fp-box wow fadeInUp animated hover-zoomin"  data-delay=".4s">#}
+    {#                              <div class="img ">#}
+    {#                                  <div class="cat">TRAVEL</div>#}
+    {#                                   <img src="../static/news/img/blog/travel/tr-7.jpg" alt="icon01">#}
+    {#                                </div>#}
+    {#                               <div class="text">#}
+    {#                                    <h5><a href="blog-details.html">If you want to find your life, you go to nature.</a></h5>   #}
+    {#                                   <div class="post-tags mt-20">#}
+    {#                                            <ul>#}
+    {#                                                 <li><a href="#"><span class="icon"><i class="fal fa-user-crown"></i></span> Johen Doe</a></li>#}
+    {#                                                 <li><a href="#"><span class="icon"><i class="fal fa-clock"></i></span> 12 March, 2021</a></li>#}
+    {#                                               #}
+    {#                                            </ul>#}
+    {#                                        </div>#}
+    {#                                </div>#}
+    {#                            </div>   #}
+    {#                             #}
+    {#                         #}
+    {#                        </div>#}
+    {#                        <div class="col-lg-4 col-md-12">#}
+    {#                             #}
+    {#                          <div class="fp-box wow fadeInUp animated hover-zoomin"  data-delay=".4s">#}
+    {#                              <div class="img ">#}
+    {#                                  <div class="cat">HISTORY</div>#}
+    {#                                   <img src="../static/news/img/blog/travel/tr-8.jpg" alt="icon01">#}
+    {#                                </div>#}
+    {#                               <div class="text">#}
+    {#                                    <h5><a href="blog-details.html">Guide to Picking the Best Travel Card</a></h5>   #}
+    {#                                   <div class="post-tags mt-20">#}
+    {#                                            <ul>#}
+    {#                                                 <li><a href="#"><span class="icon"><i class="fal fa-user-crown"></i></span> Johen Doe</a></li>#}
+    {#                                                 <li><a href="#"><span class="icon"><i class="fal fa-clock"></i></span> 12 March, 2021</a></li>#}
+    {#                                               #}
+    {#                                            </ul>#}
+    {#                                        </div>#}
+    {#                                </div>#}
+    {#                            </div>   #}
+    {#                             #}
+    {#                         #}
+    {#                        </div>#}
+    {#                         <div class="col-lg-4 col-md-12">#}
+    {#                             #}
+    {#                          <div class="fp-box wow fadeInUp animated hover-zoomin"  data-delay=".4s">#}
+    {#                              <div class="img ">#}
+    {#                                  <div class="cat">TRAVEL</div>#}
+    {#                                   <img src="../static/news/img/blog/travel/tr-1.jpg" alt="icon01">#}
+    {#                                </div>#}
+    {#                               <div class="text">#}
+    {#                                    <h5><a href="blog-details.html">If you want to find your life, you go to nature.</a></h5>   #}
+    {#                                   <div class="post-tags mt-20">#}
+    {#                                            <ul>#}
+    {#                                                 <li><a href="#"><span class="icon"><i class="fal fa-user-crown"></i></span> Johen Doe</a></li>#}
+    {#                                                 <li><a href="#"><span class="icon"><i class="fal fa-clock"></i></span> 12 March, 2021</a></li>#}
+    {#                                               #}
+    {#                                            </ul>#}
+    {#                                        </div>#}
+    {#                                </div>#}
+    {#                            </div>   #}
+    {#                             #}
+    {#                         #}
+    {#                        </div>#}
+    {#                        #}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </section>#}
+    <!-- case-study-end -->
+
+
+</main>
+<!-- main-area-end -->
+<!-- footer -->
+<footer class="footer-bg footer-p fix">
+
+    <div class="footer-center  pt-90 pb-60">
+        <div class="container">
+            <div class="row justify-content-between">
+
+                <div class="col-xl-3 col-lg-3 col-sm-6">
+
+                    <div class="footer-widget mb-30">
+                        <div class="f-widget-title">
+                            <img src="/static/images/logo-black.png" alt="img">
+                        </div>
+                        <div class="f-contact">
+                            <p> The Way to Success
+                                <br>
+                                SanHe Helps without Stint
+                            </p>
+                            <ul>
+                                <li>
+                                    {#                                    <i class="icon fal fa-envelope"></i>#}
+                                    {#                                    <span>#}
+                                    {#                                        <a href="mailto:info@example.com">han.weng.sanhe@gmail.com</a>#}
+                                    {#                                       <br>#}
+                                    {#                                       </span>#}
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-sm-6">
+                    <div class="footer-widget mb-30">
+                        <div class="f-widget-title">
+                            <h2>Quick Links</h2>
+                        </div>
+                        <div class="footer-link">
+                            <ul>
+                                <li><a href="/sanhe/index">Home</a></li>
+                                <li><a href="/sanhe/products"> Products</a></li>
+                                <li><a href="/sanhe/faqs"> FAQs </a></li>
+                                <li><a href="/blog"> News</a></li>
+                                <li><a href="/contact">Contact Us </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-sm-6">
+                    <div class="footer-widget mb-30">
+                        <div class="f-widget-title">
+                            <h2>Gallery</h2>
+                        </div>
+                        <div class="f-insta">
+                            <ul>
+                                <li>
+                                    <a href="{{ url_for('static',filename='../static/images/background/news_toppost.jpg') }}"
+                                       class=" popup-image">
+                                        <img src="{{ url_for('static',filename='../static/images/background/news_toppost.jpg') }}"
+                                             alt="img"></a></li>
+                                <li>
+                                    <a href="{{ url_for('static',filename='../static/images/background/news_toppost2.jpg') }}"
+                                       class=" popup-image"><img
+                                            src="{{ url_for('static',filename='../static/images/background/index_machine4.jpg') }}"
+                                            alt="img"></a></li>
+                                <li>
+                                    <a href="{{ url_for('static',filename='../static/images/background/news_toppost3.jpg') }}"
+                                       class=" popup-image"><img
+                                            src="{{ url_for('static',filename='../static/images/background/news_toppost3.jpg') }}"
+                                            alt="img"></a></li>
+                                <li>
+                                    <a href="{{ url_for('static',filename='../static/images/background/news_toppost4.jpg') }}"
+                                       class=" popup-image"><img
+                                            src="{{ url_for('static',filename='../static/images/background/news_toppost4.jpg') }}"
+                                            alt="img"></a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-sm-6">
+                    <style>
+                        .footer_wrapper .footer-logo {
+                            position: relative;
+                            width: 20%;
+                            top: -40px;
+                            left: -20px;
+                        }
+
+                        .footer_wrapper .footer-icon-wrapper {
+                            width: 80%;
+                            display: flex;
+                            justify-content: space-evenly;
+                        }
+
+
+                        .footer_wrapper .footer-des {
+                            color: white;
+                            text-align: center;
+                            position: relative;
+                            margin-bottom: 20px;
+                        }
+
+                        .footer-qr {
+                            display: flex;
+                            justify-content: center;
+                        }
+
+                        .footer-qr img {
+                            width: 130px;
+                            padding: 5px 10px;
+                        }
+                    </style>
+                    <div class="f-widget-title">
+                        <h2>Contact Us</h2>
+                    </div>
+                    <div class="footer_wrapper">
+                        <div class="footer-des">
+                            <div class="footer-qr">
+                                <img class="change_img" src="/static/images/contact/wechat_s.jpg" alt="">
+                                <img class="change_img" src="/static/images/contact/whatsapp_s.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-wrap">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-9">
+                    Copyright © 2023 Fujian Jianyang Sanhe Machinery Manufacturing Co., Ltd. | All Rights Reserved
+                </div>
+                <div class="col-lg-3 text-right text-xl-right">
+                    <div class="footer-widget footer-social text-right text-xl-right">
+                        <a href="https://www.facebook.com/profile.php?id=100087678476851"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/sanhe_machinery/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/SanHe_Machinery"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+<!--endfooter-->
+
+<!-- JS here -->
+<script src="../static/news/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="../static/news/js/vendor/jquery-3.6.0.min.js"></script>
+<script src="../static/news/js/popper.min.js"></script>
+<script src="../static/news/js/bootstrap.min.js"></script>
+<script src="../static/news/js/one-page-nav-min.js"></script>
+<script src="../static/news/js/slick.min.js"></script>
+<script src="../static/news/js/ajax-form.js"></script>
+<script src="../static/news/js/paroller.js"></script>
+<script src="../static/news/js/wow.min.js"></script>
+<script src="../static/news/js/js_isotope.pkgd.min.js"></script>
+<script src="../static/news/js/imagesloaded.min.js"></script>
+<script src="../static/news/js/parallax.min.js"></script>
+
+<script src="../static/news/js/jquery.counterup.min.js"></script>
+<script src="../static/news/js/jquery.scrollUp.min.js"></script>
+<script src="../static/news/js/jquery.meanmenu.min.js"></script>
+<script src="../static/news/js/parallax-scroll.js"></script>
+<script src="../static/news/js/jquery.magnific-popup.min.js"></script>
+<script src="../static/news/js/element-in-view.js"></script>
+<script src="../static/news/js/main.js"></script>
+</body>
+</html>

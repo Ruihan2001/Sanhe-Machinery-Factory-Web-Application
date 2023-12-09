@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>login_result</title>
+</head>
+<body>
+{#<div style="display: flex;flex-direction: column;align-items: center;">#}
+{#    <svg t="1676898818644" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"#}
+{#         p-id="2769" width="200" height="200">#}
+{#        <path d="M512 64c247.424 0 448 200.576 448 448S759.424 960 512 960 64 759.424 64 512 264.576 64 512 64z m298.667 224L437.333 586.667l-224-74.667 224 224 373.334-448z"#}
+{#              fill="#0BB746" p-id="2770"></path>#}
+{#    </svg>#}
+{#    <div style="text-align: center">尊敬的用户"{{ nickname }}"，您已登陆</div>#}
+{#</div>#}
+</body>
+<script>
+    if (window !== top) {
+        top.location.href = "/sanhe/user/profile/set_jwt/{{ user_id }}";
+    } else {
+        console.log("jump");
+        window.location.href = "/sanhe/user/profile/set_jwt/{{ user_id }}";
+    }
+</script>
+</html>

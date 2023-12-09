@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    {% if blog %}
+        <title>{{ blog.blog_title }} | SANHE </title>
+    {% else %}
+        <title>Blogs | SANHE </title>
+    {% endif %}
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/icon.ico') }}"/>
+    <link rel="icon" href="{{ url_for('static',filename='images/icon.ico') }}"/>
+
+    <!-- Place favicon.ico in the root directory -->
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/news/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='../static/news/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='../static/news/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='../static/news/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='../static/news/font-flaticon/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='../static/news/css/dripicons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='../static/news/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='../static/news/css/meanmenu.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='../static/news/css/default.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='../static/news/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='../static/news/css/responsive.css') }}">
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+<header class="header-area header-area2">
+    <div class="header-top second-header d-none d-lg-block" style="display: none !important">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6 d-none d-md-block">
+                    <div class="header-cta">
+                        <div class="row">
+                            <div class="col-lg-3"><a href="#" class="h-btn"><span class="icon">
+
+                            <img src="{{ url_for('static',filename='../static/news/img/icon/top-trending-icon.png') }}"
+                                 alt="courses-img1">
+                            </span>Hot</a></div>
+                            <div class="col-lg-9">
+                                <div class="trending-slider-active">
+                                    <span>  SANHE JIXIE is leading a new mahcine type</span>
+                                    <span> How to produce a wonderful machine</span>
+                                    <span>There are new machines these days</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 d-none d-lg-block text-right">
+                    <i class="fal fa-cloud-sun">19°c Beijing</i>
+                </div>
+                <div class="col-lg-3 col-md-3 d-none d-lg-block">
+                    <a href="#" class="top-btn"><i class="fal fa-calendar-alt"></i> Friday, 31 March, 2023</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="header-sticky" class="menu-area">
+        <div class="container">
+            <div class="second-menu">
+                <div class="row align-items-center">
+                    <div class="col-xl-2 col-lg-2">
+                        <div class="logo-header logo-white">
+                            <a href="/sanhe/index"><img
+                                    src="{{ url_for('static',filename='/images/logo-black.png') }}"></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+
+                        <div class="main-menu text-right text-xl-right">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li class="sub">
+                                        <a href="\sanhe\index">Home</a>
+                                    </li>
+                                    <li><a href="\sanhe\products">Products</a></li>
+                                    <li class="sub">
+                                        <a href="\blog\index">News</a>
+                                    </li>
+                                    <li class="sub">
+                                        <a href="\sanhe\faqs">FAQs</a>
+                                    </li>
+                                    <li class="sub">
+                                        <a href="\sanhe\contact">Contact Us</a>
+                                    </li>
+                                    {% if user %}
+                                        <li class="hidden-wide">
+                                            <a href="/sanhe/user/profile/{{ user.unionid }}">User Profile</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="hidden-wide">
+                                            <a href="\sanhe\auth\login">Login</a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-2 col-lg-3 d-none d-lg-block mt-20 mb-20">
+                        <div class="header-social text-right">
+                            <span>
+                  {% if user %}
+                      <img class="user-pic"
+                           onclick="window.location.href='/sanhe/user/profile/{{ user.unionid }}'"
+                           src="{{ user.headimgurl }}">
+                  {% else %}
+                      <img class="user-pic"
+                           onclick="window.location.href='/sanhe/auth/login'"
+                           src="/static/images/avatar/unlogged.png">
+                  {% endif %}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-12">
+                        <div class="mobile-menu"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- offcanvas-area -->
+{#<div class="offcanvas-menu">#}
+{#    <span class="menu-close"><i class="fas fa-times"></i></span>#}
+{#    <form role="search" method="get" id="searchform" class="searchform" action="http://wordpress.zcube.in/xconsulta/">#}
+{#        <input type="text" name="s" id="search" value="" placeholder="Search"/>#}
+{#        <button><i class="fa fa-search"></i></button>#}
+{#    </form>#}
+{##}
+{##}
+{#    <div id="cssmenu2" class="menu-one-page-menu-container">#}
+{#        <ul id="menu-one-page-menu-1" class="menu">#}
+{#            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a#}
+{#                    href="/sanhe/contact"><span>+86 13559329496</span></a></li>#}
+{#            <li class="menu-item menu-item-type-custom menu-item-object-custom">#}
+{#                <a href="/sanhe/contact"><span>han.weng.sanhe@gmail.com</span></a>#}
+{#            </li>#}
+{#        </ul>#}
+{#    </div>#}
+{#</div>#}
+<main>
+    <section class="inner-blog pt-10 pb-90">
+        <div class="container">
+            <div class="row">
+                {% block content %}<!--the different parts of other htmls will be added here-->{% endblock %}
+                <!-- #right side -->
+                <div class="col-sm-12 col-md-12 col-lg-4">
+                    <aside class="sidebar-widget">
+                        <section id="search-3" class="widget widget_search">
+                            <h2 class="widget-title">Search</h2>
+                            <form role="search" method="get" class="search-form"
+                                  action="/blog/all">
+                                <label>
+                                    <span class="screen-reader-text">Search for:</span>
+                                    <input type="search" class="search-field" placeholder="Search &hellip;" value=""
+                                           name="search"/>
+                                </label>
+                                <input type="submit" class="search-submit" value="Search"/>
+                            </form>
+                        </section>
+                        <section id="categories-1" class="widget widget_categories">
+                            <h2 class="widget-title">Categories</h2>
+                            <ul>
+                                <li class="cat-item cat-item-16"><a href="/blog/all?type=corporation">Corporation</a>
+                                </li>
+                                <li class="cat-item cat-item-23"><a href="/blog/all?type=wood">Wood</a></li>
+                                <li class="cat-item cat-item-18"><a href="/blog/all?type=sharing">Sharing</a></li>
+                            </ul>
+                        </section>
+                        {#                        <section id="tag_cloud-1" class="widget widget_tag_cloud">#}
+                        {#                            <h2 class="widget-title">Tag</h2>#}
+                        {#                            <div class="tagcloud">#}
+                        {#                                <a href="#" class="tag-cloud-link tag-link-28 tag-link-position-1"#}
+                        {#                                   style="font-size: 8pt;" aria-label="app (1 item)">Wood</a>#}
+                        {#                                <a href="#" class="tag-cloud-link tag-link-17 tag-link-position-2"#}
+                        {#                                   style="font-size: 8pt;" aria-label="Branding (1 item)">Machine</a>#}
+                        {#                                <a href="#" class="tag-cloud-link tag-link-20 tag-link-position-3"#}
+                        {#                                   style="font-size: 8pt;" aria-label="corporat (1 item)">Company</a>#}
+                        {#                                <a href="#" class="tag-cloud-link tag-link-24 tag-link-position-4"#}
+                        {#                                   style="font-size: 16.4pt;" aria-label="Design (2 items)">Design</a>#}
+                        {#                                <a href="#" class="tag-cloud-link tag-link-25 tag-link-position-5"#}
+                        {#                                   style="font-size: 22pt;" aria-label="gallery (3 items)">Service</a>#}
+                        {#                                <a href="#" class="tag-cloud-link tag-link-26 tag-link-position-6"#}
+                        {#                                   style="font-size: 8pt;" aria-label="video (1 item)">Company History</a>#}
+                        {#                                <a href="#" class="tag-cloud-link tag-link-29 tag-link-position-7"#}
+                        {#                                   style="font-size: 16.4pt;" aria-label="web design (2 items)">Wood Culture</a>#}
+                        {#                            </div>#}
+                        {#                        </section>#}
+                        <section id="custom_html-5" class="widget_text widget widget_custom_html">
+                            <h2 class="widget-title">Follow Us</h2>
+                            <div class="textwidget custom-html-widget">
+                                <div class="widget-social">
+                                    <a href="#"><i class="fab fa-facebook-f"></i> </a>
+                                    <a href="#"><i class="fab fa-instagram"> </i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i> </a>
+                                    <a href="#"><i class="fab fa-pinterest-p"></i> </a>
+                                    <a href="#"><i class="fab fa-linkedin"></i> </a>
+                                    <a href="#"><i class="fab fa-youtube"></i> </a>
+                                </div>
+                            </div>
+                        </section>
+                    </aside>
+                </div>
+                <!-- #right side end -->
+
+            </div>
+        </div>
+    </section>
+    <!-- inner-blog-end -->
+
+
+</main>
+
+<!-- JS here -->
+<script src="{{ url_for('static',filename='../static/news/js/vendor/modernizr-3.5.0.min.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/vendor/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/popper.min.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/one-page-nav-min.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/slick.min.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/ajax-form.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/paroller.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/wow.min.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/js_isotope.pkgd.min.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/imagesloaded.min.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/parallax.min.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/jquery.counterup.min.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/jquery.scrollUp.min.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/jquery.meanmenu.min.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/parallax-scroll.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/element-in-view.js') }}"></script>
+<script src="{{ url_for('static',filename='../static/news/js/main.js') }}"></script>
+
+<!-- footer -->
+<footer class="footer-bg footer-p fix">
+
+    <div class="footer-center  pt-90 pb-60">
+        <div class="container">
+            <div class="row justify-content-between">
+
+                <div class="col-xl-3 col-lg-3 col-sm-6">
+
+                    <div class="footer-widget mb-30">
+                        <div class="f-widget-title">
+                            <img src="/static/images/logo-black.png" alt="img">
+                        </div>
+                        <div class="f-contact">
+                            <p> The Way to Success
+                                <br>
+                                SanHe Helps without Stint
+                            </p>
+                            <ul>
+                                <li>
+                                    {#                                    <i class="icon fal fa-envelope"></i>#}
+                                    {#                                    <span>#}
+                                    {#                                        <a href="mailto:info@example.com">han.weng.sanhe@gmail.com</a>#}
+                                    {#                                       <br>#}
+                                    {#                                       </span>#}
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-sm-6">
+                    <div class="footer-widget mb-30">
+                        <div class="f-widget-title">
+                            <h2>Quick Links</h2>
+                        </div>
+                        <div class="footer-link">
+                            <ul>
+                                <li><a href="/sanhe/index">Home</a></li>
+                                <li><a href="/sanhe/products"> Products</a></li>
+                                <li><a href="/sanhe/faqs"> FAQs </a></li>
+                                <li><a href="/blog"> News</a></li>
+                                <li><a href="/contact">Contact Us </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-sm-6">
+                    <div class="footer-widget mb-30">
+                        <div class="f-widget-title">
+                            <h2>Gallery</h2>
+                        </div>
+                        <div class="f-insta">
+                            <ul>
+                                <li>
+                                    <a href="{{ url_for('static',filename='../static/images/background/news_toppost.jpg') }}"
+                                       class=" popup-image">
+                                        <img src="{{ url_for('static',filename='../static/images/background/news_toppost.jpg') }}"
+                                             alt="img"></a></li>
+                                <li>
+                                    <a href="{{ url_for('static',filename='../static/images/background/news_toppost2.jpg') }}"
+                                       class=" popup-image"><img
+                                            src="{{ url_for('static',filename='../static/images/background/index_machine4.jpg') }}"
+                                            alt="img"></a></li>
+                                <li>
+                                    <a href="{{ url_for('static',filename='../static/images/background/news_toppost3.jpg') }}"
+                                       class=" popup-image"><img
+                                            src="{{ url_for('static',filename='../static/images/background/news_toppost3.jpg') }}"
+                                            alt="img"></a></li>
+                                <li>
+                                    <a href="{{ url_for('static',filename='../static/images/background/news_toppost4.jpg') }}"
+                                       class=" popup-image"><img
+                                            src="{{ url_for('static',filename='../static/images/background/news_toppost4.jpg') }}"
+                                            alt="img"></a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-sm-6">
+                    <style>
+                        .footer_wrapper .footer-logo {
+                            position: relative;
+                            width: 20%;
+                            top: -40px;
+                            left: -20px;
+                        }
+
+                        .footer_wrapper .footer-icon-wrapper {
+                            width: 80%;
+                            display: flex;
+                            justify-content: space-evenly;
+                        }
+
+
+                        .footer_wrapper .footer-des {
+                            color: white;
+                            text-align: center;
+                            position: relative;
+                            margin-bottom: 20px;
+                        }
+
+                        .footer-qr {
+                            display: flex;
+                            justify-content: center;
+                        }
+
+                        .footer-qr img {
+                            width: 130px;
+                            padding: 5px 10px;
+                        }
+                    </style>
+                    <div class="f-widget-title">
+                        <h2>Contact Us</h2>
+                    </div>
+                    <div class="footer_wrapper">
+                        <div class="footer-des">
+                            <div class="footer-qr">
+                                <img class="change_img" src="/static/images/contact/wechat_s.jpg" alt="">
+                                <img class="change_img" src="/static/images/contact/whatsapp_s.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-wrap">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-9">
+                    Copyright © 2023 Fujian Jianyang Sanhe Machinery Manufacturing Co., Ltd. | All Rights Reserved
+                </div>
+                <div class="col-lg-3 text-right text-xl-right">
+                    <div class="footer-widget footer-social text-right text-xl-right">
+                        <a href="https://www.facebook.com/profile.php?id=100087678476851"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/sanhe_machinery/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/SanHe_Machinery"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+<!--endfooter-->
+{% block script %}
+{% endblock %}
+</body>
+</html>

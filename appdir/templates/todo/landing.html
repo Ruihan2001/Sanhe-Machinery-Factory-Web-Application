@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--  Meta  -->
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/ico" href="images/logo.jpg"/>
+    <!--bootstrap CDN-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+            crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+            crossorigin="anonymous"></script>
+    <!--portfolio filter-->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!--  aos  -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!--  Styles  -->
+    <link rel="stylesheet" href="styles/index.processed.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Righteous|Raleway");
+
+        main {
+            color: #757575;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        /*--- nav ---*/
+        nav {
+            transition: .5s;
+            height: 80px;
+        }
+
+        nav.sticky {
+            background: rgba(68, 68, 68, 0.9);
+            height: 70px;
+        }
+
+        nav .navbar-brand {
+            color: #ffe400;
+            font-weight: bolder;
+            font-size: 30px;
+        }
+
+        @media only screen and (max-width: 767px) {
+            nav .navbar-brand {
+                font-size: 24px;
+            }
+        }
+
+        /*----- carousel -----*/
+        .carousel-item img {
+            width: 100vw;
+            min-height: 100vh;
+            object-fit: cover;
+        }
+
+        @media only screen and (max-width: 767px) {
+            .carousel-item img {
+                min-height: 80vh;
+            }
+        }
+
+        .carousel-desc {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-100%, -50%);
+            width: 40%;
+            z-index: 9;
+            color: white;
+        }
+
+        .carousel-desc h3 {
+            font-family: 'Righteous', cursive;
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 85px;
+            font-size: 60px;
+        }
+
+        .carousel-desc h3:before {
+            content: "";
+            position: absolute;
+            background: #ffe400;
+            width: 200px;
+            height: 200px;
+            border-radius: 100%;
+            z-index: -1;
+            left: -50px;
+            top: -25px;
+        }
+
+        @media only screen and (max-width: 767px) {
+            .carousel-desc {
+                margin: 0;
+                top: 110px;
+                width: 100%;
+                padding: 0 16px;
+                transform: none;
+                left: 0;
+            }
+
+            .carousel-desc h3 {
+                margin-bottom: 32px;
+                font-size: 36px;
+            }
+
+            .carousel-desc h3:before {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            color: #ffe400;
+        }
+
+        /*----- common section class -----*/
+        .section-title {
+            text-transform: uppercase;
+            text-align: center;
+            color: #444444;
+            font-weight: 700;
+            margin-bottom: 0;
+            font-size: 2.5vw;
+        }
+
+        .section-title span {
+            font-family: 'Righteous', cursive;
+            color: #e8e8e8;
+            display: block;
+            font-size: 6.5vw;
+            margin-bottom: -4vw;
+        }
+
+        @media only screen and (max-width: 767px) {
+            .section-title {
+                font-size: 24px;
+            }
+
+            .section-title span {
+                font-size: 40px;
+                margin-bottom: -25px;
+            }
+        }
+
+        .section-subtitle {
+            text-transform: uppercase;
+            text-align: center;
+            color: #444444;
+            font-weight: 700;
+            margin-bottom: 0;
+            font-size: 30px;
+            margin: 5% 0;
+        }
+
+        /*--- common-btn ---*/
+        .common-btn {
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+            background: none;
+            border: 3px solid;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            margin: 1em auto;
+            padding: 0.5em 3em;
+            position: relative;
+            text-transform: uppercase;
+            overflow: hidden;
+            /*--- common-btn-light ---*/
+            /*--- common-btn-dark ---*/
+        }
+
+        .common-btn ::after {
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .common-btn::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+        }
+
+        .common-btn::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            height: 100%;
+            left: -35%;
+            top: 0;
+            transform: skew(50deg);
+            transition-duration: 0.6s;
+            transform-origin: top left;
+            width: 0;
+        }
+
+        .common-btn:hover:after {
+            height: 100%;
+            width: 135%;
+        }
+
+        .common-btn.common-btn-light {
+            border-color: #fff;
+            color: #fff;
+        }
+
+        .common-btn.common-btn-light::before, .common-btn.common-btn-light::after {
+            background: #fff;
+        }
+
+        .common-btn.common-btn-light:hover {
+            color: #444;
+        }
+
+        .common-btn.common-btn-dark {
+            border-color: #444;
+            color: #444;
+        }
+
+        .common-btn.common-btn-dark::before, .common-btn.common-btn-dark::after {
+            background: #444;
+        }
+
+        .common-btn.common-btn-dark:hover {
+            color: #fff;
+        }
+
+        /*----- backgrounds -----*/
+        .boost, .service, .contact {
+            background-color: #f6f6f6;
+        }
+
+        .portfolio, .pricing {
+            background-color: #ffe400;
+        }
+
+        .portfolio .section-title span, .pricing .section-title span {
+            color: #e8d100;
+        }
+
+        .portfolio .section-title, .pricing .section-title {
+            color: #444;
+        }
+
+        /*----- num count -----*/
+        .num-count-number {
+            font-size: 46px;
+            font-weight: 700;
+            color: #444;
+        }
+
+        /*----- boost -----*/
+        /*----- parallax -----*/
+        .parallax {
+            position: relative;
+            background: url(images/carousel/2.jpg) no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .parallax:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background-color: rgba(27, 30, 33, 0.6);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .parallax .section-title, .parallax p {
+            color: #fff;
+        }
+
+        .parallax .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /*----- feature -----*/
+        /*----- portfolio -----*/
+        .hovereffect {
+            width: 100%;
+            height: 100%;
+            float: left;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            cursor: default;
+        }
+
+        .hovereffect .overlay {
+            position: absolute;
+            overflow: hidden;
+            width: 80%;
+            height: 80%;
+            left: 10%;
+            top: 10%;
+            border-bottom: 1px solid #FFF;
+            border-top: 1px solid #FFF;
+            -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+            transition: opacity 0.35s, transform 0.35s;
+            -webkit-transform: scale(0, 1);
+            -ms-transform: scale(0, 1);
+            transform: scale(0, 1);
+        }
+
+        .hovereffect:hover .overlay {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            -webkit-transform: scale(1);
+            -ms-transform: scale(1);
+            transform: scale(1);
+        }
+
+        .hovereffect img {
+            display: block;
+            position: relative;
+            -webkit-transition: all 0.35s;
+            transition: all 0.35s;
+        }
+
+        .hovereffect:hover img {
+            filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="linear" slope="0.6" /><feFuncG type="linear" slope="0.6" /><feFuncB type="linear" slope="0.6" /></feComponentTransfer></filter></svg>#filter');
+            filter: brightness(0.6);
+            -webkit-filter: brightness(0.6);
+        }
+
+        .hovereffect h2 {
+            text-transform: uppercase;
+            text-align: center;
+            position: relative;
+            font-size: 17px;
+            background-color: transparent;
+            color: #FFF;
+            padding: 1em 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+            transition: opacity 0.35s, transform 0.35s;
+            -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+        }
+
+        .hovereffect a, .hovereffect p {
+            color: #FFF;
+            padding: 1em 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+            transition: opacity 0.35s, transform 0.35s;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+        }
+
+        .hovereffect:hover a, .hovereffect:hover p, .hovereffect:hover h2 {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        /*----- service -----*/
+        .service .svg-inline--fa {
+            font-size: 40px;
+        }
+
+        /*----- pricing -----*/
+        .pricing .card .card-header {
+            position: relative;
+        }
+
+        .pricing .card .card-header .card-title {
+            color: #fff;
+        }
+
+        .pricing .card .card-header .card-text {
+            color: #fff;
+        }
+
+        .pricing .card .card-header .card-text span {
+            font-size: 46px;
+        }
+
+        .pricing .card .card-header:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background-color: rgba(27, 30, 33, 0.6);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .pricing .card .card-footer button {
+            text-transform: uppercase;
+            font-weight: 500;
+            border-radius: 0;
+            line-height: 2;
+        }
+
+        /*--- typewriter effect ---*/
+        /*--- blog ---*/
+        .blog .card-title {
+            color: #000;
+            font-weight: 600;
+        }
+
+        /*--- contact ---*/
+        .contact .contact-form {
+            width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact .contact-form textarea {
+            width: 100%;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            resize: none;
+        }
+
+        @media only screen and (max-width: 767px) {
+            .contact .contact-form {
+                width: 100%;
+            }
+        }
+
+        /*----- footer -----*/
+        footer {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        footer .svg-inline--fa {
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+<main>
+
+    <header id="home">
+        <div id="header-carousel" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#header-carousel" data-slide-to="1"></li>
+            </ul>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf" alt="#">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1495681803763-410ec9ff583d" alt="#">
+                </div>
+                <div class="carousel-desc">
+                    <h3 class="text-uppercase" data-aos="fade-down">
+                        creative<br>and professional
+                    </h3>
+                    <p data-aos="fade-down">
+                        Use, by you or one client, in a single end product which end users are not charged for. Use, by
+                        you or one client, in a single end product which end users are not charged for.
+                    </p>
+                    <button type="button" data-aos="fade-down" class="common-btn common-btn-light">contact us</button>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-sm fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    LOGO CREATIVE
+                </a>
+                <button class="navbar-toggler" type="button"
+                        data-toggle="collapse"
+                        data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon">
+              <i class="fas fa-bars"></i>
+            </span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about_us">Aboust Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#features">Features</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#portfolio">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#service">Service</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#pricing">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#team">Team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#blog">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--   About Us   -->
+
+    <section id="about_us" class="about-us py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="section-title text-center" data-aos="fade-up">
+                        <span>About</span>This is the one page polo
+                    </h2>
+                    <div class="mt-5 text-center" data-aos="fade-up">
+                        <p>
+                            Molestie ultricies quam. Donec at sem. Praesent pretium. Maorbi quis nulla vehicula felsd
+                            laoreet. Sed ullamcorper arcu ente. Sed tempus tempor cild Nulla vierra ultrices magnal Nam
+                            rutrum congue diam. do eiusmod tempor incididunt ut dolore magna aliqua.
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="common-btn common-btn-dark" data-aos="fade-right">More info
+                        </button>
+                        <button type="button" class="common-btn common-btn-dark" data-aos="fade-left">join experience
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--   Number Count   -->
+
+    <section id="num-count" class="num-count py-5">
+        <div class="container">
+            <div class="num-count" data-aos="fade-up">
+                <h2 class="section-subtitle">HERE’RE SOME IMPRESSIVE NUMBERS ABOUT US</h2>
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                        <p class="num-count-number">500</p>
+                        <p class="num-count-title">Work Stations</p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <p class="num-count-number">7533</p>
+                        <p class="num-count-title">Project Complete</p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <p class="num-count-number">4222</p>
+                        <p class="num-count-title">On Going Project</p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <p class="num-count-number">6980</p>
+                        <p class="num-count-title">Happy Client</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--   Boost   -->
+
+    <section id="boost" class="boost py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7" data-aos="fade-right">
+                    <h2 class="section-title">
+                        <span>responsive</span>Boost your website
+                    </h2>
+                    <div class="mt-5">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ante ex, fermentum vel libero
+                            eget interdum semper libero. Curabitur egestas, arcu id tempor convallis.
+                        </p>
+                        <ul>
+                            <li>Responsive Design & Retina Ready.</li>
+                            <li>Business Solution Any Company.</li>
+                            <li>Powerful Admin Panel.</li>
+                            <li>24/7 Support.</li>
+                        </ul>
+                    </div>
+                    <button type="button" class="common-btn common-btn-dark">Purchase</button>
+                </div>
+                <div class="col-md-5" data-aos="fade-left">
+                    <img src="https://picsum.photos/id/1/5616/3744"
+                         width="100%"
+                         height="500"
+                         style="object-fit: cover;"
+                    />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--   Who we are - Parallax   -->
+
+    <section id="parallax" class="parallax py-5">
+        <div class="container text-center">
+            <h2 class="section-title" data-aos="fade-up">who we are</h2>
+            <div class="mt-5" data-aos="fade-up">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ante ex, fermentum vel libero eget
+                    interdum semper libero. Curabitur egestas, arcu id tempor convallis.
+                </p>
+            </div>
+            <div class="mt-5">
+                <button type="button" class="common-btn common-btn-light" data-aos="fade-right">more info</button>
+                <button type="button" class="common-btn common-btn-light" data-aos="fade-left">join experience</button>
+            </div>
+        </div>
+    </section>
+
+    <!--   Features   -->
+
+    <section id="features" class="features py-5">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span>features</span>we're creative crafting with love
+            </h2>
+            <div class="row mt-5">
+                <div class="col-md-4" data-aos="flip-left">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="https://picsum.photos/200" class="img-fluid">
+                        </div>
+                        <div class="col-9">
+                            <h4 class="text-uppercase"> Powerful Security </h4>
+                            <p>
+                                Lorem ipsum dolor sicon adipiscing elit. Etiam antferme ntubero eget rorem interdum.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="https://picsum.photos/200" class="img-fluid">
+                        </div>
+                        <div class="col-9">
+                            <h4 class="text-uppercase"> High Resolution Theme </h4>
+                            <p>
+                                Lorem ipsum dolor sicon adipiscing elit. Etiam antferme ntubero eget rorem interdum.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="https://picsum.photos/200" class="img-fluid">
+                        </div>
+                        <div class="col-9">
+                            <h4 class="text-uppercase"> Responsive Theme </h4>
+                            <p>
+                                Lorem ipsum dolor sicon adipiscing elit. Etiam antferme ntubero eget rorem interdum.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="https://picsum.photos/200" class="img-fluid">
+                        </div>
+                        <div class="col-9">
+                            <h4 class="text-uppercase"> Creative Ideas </h4>
+                            <p>
+                                Lorem ipsum dolor sicon adipiscing elit. Etiam antferme ntubero eget rorem interdum.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="https://picsum.photos/200" class="img-fluid">
+                        </div>
+                        <div class="col-9">
+                            <h4 class="text-uppercase"> Awesome Interface </h4>
+                            <p>
+                                Lorem ipsum dolor sicon adipiscing elit. Etiam antferme ntubero eget rorem interdum.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="https://picsum.photos/200" class="img-fluid">
+                        </div>
+                        <div class="col-9">
+                            <h4 class="text-uppercase"> CUSTOM CONTENT BLOCKS </h4>
+                            <p>
+                                Lorem ipsum dolor sicon adipiscing elit. Etiam antferme ntubero eget rorem interdum.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="https://picsum.photos/200" class="img-fluid">
+                        </div>
+                        <div class="col-9">
+                            <h4 class="text-uppercase"> Powerfull Admin Panel </h4>
+                            <p>
+                                Lorem ipsum dolor sicon adipiscing elit. Etiam antferme ntubero eget rorem interdum.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="https://picsum.photos/200" class="img-fluid">
+                        </div>
+                        <div class="col-9">
+                            <h4 class="text-uppercase"> Untimade Website Builder </h4>
+                            <p>
+                                Lorem ipsum dolor sicon adipiscing elit. Etiam antferme ntubero eget rorem interdum.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="https://picsum.photos/200" class="img-fluid">
+                        </div>
+                        <div class="col-9">
+                            <h4 class="text-uppercase"> TRENDY DESIGN </h4>
+                            <p>
+                                Lorem ipsum dolor sicon adipiscing elit. Etiam antferme ntubero eget rorem interdum.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--   Work Portfolio   -->
+
+    <section id="portfolio" class="portfolio pt-5">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span>work</span>our portfolio
+            </h2>
+        </div>
+        <div class="container-fluid">
+            <div class="mt-5">
+                <div class="text-center">
+                    <button class="btn btn-outline-dark filter-button" data-filter="all">All</button>
+                    <button class="btn btn-outline-dark filter-button" data-filter="business">Business</button>
+                    <button class="btn btn-outline-dark filter-button" data-filter="corporate">Corporate</button>
+                    <button class="btn btn-outline-dark filter-button" data-filter="branding">Branding</button>
+                    <button class="btn btn-outline-dark filter-button" data-filter="photography">Photography</button>
+                </div>
+                <div class="row mt-4">
+
+                    <div class="p-0 col-lg-3 col-md-3 col-sm-3 col-xs-6 filter business">
+                        <div class="hovereffect">
+                            <img src="https://picsum.photos/id/0/200/150" width="100%" class="img-fluid">
+                            <div class="overlay">
+                                <h2>Gallary Item</h2>
+                                <p><a href="#">LINK HERE</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-0 col-lg-3 col-md-3 col-sm-3 col-xs-6 filter business">
+                        <div class="hovereffect">
+                            <img src="https://picsum.photos/id/1/200/150" width="100%" class="img-fluid">
+                            <div class="overlay">
+                                <h2>Gallary Item</h2>
+                                <p><a href="#">LINK HERE</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-0 col-lg-3 col-md-3 col-sm-3 col-xs-6 filter corporate">
+                        <div class="hovereffect">
+                            <img src="https://picsum.photos/id/2/200/150" width="100%" class="img-fluid">
+                            <div class="overlay">
+                                <h2>Gallary Item</h2>
+                                <p><a href="#">LINK HERE</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-0 col-lg-3 col-md-3 col-sm-3 col-xs-6 filter corporate">
+                        <div class="hovereffect">
+                            <img src="https://picsum.photos/id/3/200/150" width="100%" class="img-fluid">
+                            <div class="overlay">
+                                <h2>Gallary Item</h2>
+                                <p><a href="#">LINK HERE</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-0 col-lg-3 col-md-3 col-sm-3 col-xs-6 filter branding">
+                        <div class="hovereffect">
+                            <img src="https://picsum.photos/id/4/200/150" width="100%" class="img-fluid">
+                            <div class="overlay">
+                                <h2>Gallary Item</h2>
+                                <p><a href="#">LINK HERE</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-0 col-lg-3 col-md-3 col-sm-3 col-xs-6 filter branding">
+                        <div class="hovereffect">
+                            <img src="https://picsum.photos/id/5/200/150" width="100%" class="img-fluid">
+                            <div class="overlay">
+                                <h2>Gallary Item</h2>
+                                <p><a href="#">LINK HERE</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-0 col-lg-3 col-md-3 col-sm-3 col-xs-6 filter photography">
+                        <div class="hovereffect">
+                            <img src="https://picsum.photos/id/6/200/150" width="100%" class="img-fluid">
+                            <div class="overlay">
+                                <h2>Gallary Item</h2>
+                                <p><a href="#">LINK HERE</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-0 col-lg-3 col-md-3 col-sm-3 col-xs-6 filter photography">
+                        <div class="hovereffect">
+                            <img src="https://picsum.photos/id/7/200/150" width="100%" class="img-fluid">
+                            <div class="overlay">
+                                <h2>Gallary Item</h2>
+                                <p><a href="#">LINK HERE</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--   Service   -->
+
+    <section id="service" class="service py-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5" data-aos="flip-right">
+                    <img src="https://picsum.photos/id/445/4256/2819" width="100%" height="500"
+                         style="object-fit: cover;">
+                </div>
+                <div class="col-md-7">
+                    <h2 class="section-title" data-aos="fade-up">
+                        <span>service</span>clean idea and unique design
+                    </h2>
+                    <div class="mt-5">
+                        <div class="row text-center">
+                            <div class="col-md-6 my-2" data-aos="flip-right">
+                                <i class="fa fa-book-open"></i>
+                                <h4 class="text-uppercase">EXCELLENT FEATURES</h4>
+                                <p>
+                                    Lorem ipsum dolor sicon adipiscing elit. Etiam antferme ntubero eget rorem interdum.
+                                </p>
+                            </div>
+                            <div class="col-md-6 my-2" data-aos="flip-right">
+                                <i class="fa fa-book-open"></i>
+                                <h4 class="text-uppercase">EXCELLENT FEATURES</h4>
+                                <p>
+                                    Lorem ipsum dolor sicon adipiscing elit. Etiam antferme ntubero eget rorem interdum.
+                                </p>
+                            </div>
+                            <div class="col-md-6 my-2" data-aos="flip-right">
+                                <i class="fa fa-book-open"></i>
+                                <h4 class="text-uppercase">EXCELLENT FEATURES</h4>
+                                <p>
+                                    Lorem ipsum dolor sicon adipiscing elit. Etiam antferme ntubero eget rorem interdum.
+                                </p>
+                            </div>
+                            <div class="col-md-6 my-2" data-aos="flip-right">
+                                <i class="fa fa-book-open"></i>
+                                <h4 class="text-uppercase">EXCELLENT FEATURES</h4>
+                                <p>
+                                    Lorem ipsum dolor sicon adipiscing elit. Etiam antferme ntubero eget rorem interdum.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--   Pricing   -->
+
+    <section id="pricing" class="pricing py-5">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span>pricing</span>choose your plan
+            </h2>
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="card border-0" data-aos="zoom-in">
+                        <div class="card-header p-0 text-center">
+                            <img class="card-img-top" src="https://picsum.photos/200/110/?blur" alt="Card image">
+                            <div class="card-img-overlay">
+                                <p class="card-title text-uppercase">standard</p>
+                                <p class="card-text">$ <span>107</span> / MONTH</p>
+                                <p class="card-text">15 day free trial on all accounts</p>
+                            </div>
+                        </div>
+                        <div class="card-body p-0 text-center">
+                            <hr class="mt-0">
+                            <p>10 Pages Website</p>
+                            <hr>
+                            <p>Sell 1 Product & Accept Donations</p>
+                            <hr>
+                            <p>Developer Platform</p>
+                            <hr>
+                            <p>20 Pages, Galleries</p>
+                            <hr>
+                            <p>120 GB Cloud Storage</p>
+                            <hr>
+                            <p> - </p>
+                            <hr>
+                            <p> - </p>
+                        </div>
+                        <div class="card-footer p-0">
+                            <button class="btn btn-dark btn-block py-3">get standard now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0" data-aos="zoom-in">
+                        <div class="card-header p-0 text-center">
+                            <img class="card-img-top" src="https://picsum.photos/200/110/?blur" alt="Card image">
+                            <div class="card-img-overlay">
+                                <p class="card-title text-uppercase">premium</p>
+                                <p class="card-text">$ <span>433</span> / MONTH</p>
+                                <p class="card-text">15 day free trial on all accounts</p>
+                            </div>
+                        </div>
+                        <div class="card-body p-0 text-center">
+                            <hr class="mt-0">
+                            <p>10 Pages Website</p>
+                            <hr>
+                            <p>Sell 1 Product & Accept Donations</p>
+                            <hr>
+                            <p>Developer Platform</p>
+                            <hr>
+                            <p>90 Pages, Galleries</p>
+                            <hr>
+                            <p>500 GB Cloud Storage</p>
+                            <hr>
+                            <p>Mobile Website and Store</p>
+                            <hr>
+                            <p> - </p>
+                        </div>
+                        <div class="card-footer p-0">
+                            <button class="btn btn-dark btn-block py-3">get standard now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0" data-aos="zoom-in">
+                        <div class="card-header p-0 text-center">
+                            <img class="card-img-top" src="https://picsum.photos/200/110/?blur" alt="Card image">
+                            <div class="card-img-overlay">
+                                <p class="card-title text-uppercase">ultimate</p>
+                                <p class="card-text">$ <span>1233</span> / MONTH</p>
+                                <p class="card-text">15 day free trial on all accounts</p>
+                            </div>
+                        </div>
+                        <div class="card-body p-0 text-center">
+                            <hr class="mt-0">
+                            <p>10 Pages Website</p>
+                            <hr>
+                            <p>Sell 1 Product & Accept Donations</p>
+                            <hr>
+                            <p>Developer Platform</p>
+                            <hr>
+                            <p>90 Pages, Galleries</p>
+                            <hr>
+                            <p>120 GB Cloud Storage</p>
+                            <hr>
+                            <p>Mobile Website and Store</p>
+                            <hr>
+                            <p>24/7 Support </p>
+                        </div>
+                        <div class="card-footer p-0">
+                            <button class="btn btn-dark btn-block py-3">get standard now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--   Team   -->
+
+    <section id="team" class="team py-5">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span>expert</span>meet our team
+            </h2>
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="card" data-aos="zoom-in">
+                        <img class="card-img-top"
+                             src="https://picsum.photos/id/338/2000/1333"
+                             alt="Card image"
+                             class="img-fluid">
+                        <div class="card-body text-center text-uppercase">
+                            <h4 class="card-title">John Doe</h4>
+                            <hr>
+                            <p class="m-0">CEO</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" data-aos="zoom-in">
+                        <img class="card-img-top"
+                             src="https://picsum.photos/id/342/2896/1944"
+                             alt="Card image"
+                             class="img-fluid">
+                        <div class="card-body text-center text-uppercase">
+                            <h4 class="card-title">Maria Doe</h4>
+                            <hr>
+                            <p class="m-0">designer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" data-aos="zoom-in">
+                        <img class="card-img-top"
+                             src="https://picsum.photos/id/447/1280/853"
+                             alt="Card image"
+                             class="img-fluid">
+                        <div class="card-body text-center text-uppercase">
+                            <h4 class="card-title">Mar Enderson</h4>
+                            <hr>
+                            <p class="m-0">support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--   Parallax   -->
+
+    <section id="parallax" class="parallax py-5">
+        <div class="container text-center">
+            <h2 class="section-title" data-aos="fade-up">
+                Are you impressed by our work?
+            </h2>
+            <div class="mt-5" data-aos="fade-up">
+                <p>
+                    Durabitur commodo ras non urna mauris mollis auctor proin laoreet
+                </p>
+            </div>
+            <div class="mt-5">
+                <button type="button" class="common-btn common-btn-light" data-aos="fade-right">purchase now</button>
+                <button type="button" class="common-btn common-btn-light" data-aos="fade-left">get in touch</button>
+            </div>
+        </div>
+    </section>
+
+    <!--   Blog   -->
+
+    <section id="blog" class="blog py-5">
+        <div class="container">
+            <h2 class="section-title" data-aos="fad-up">
+                <span>news</span>recent blog post
+            </h2>
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="card" data-aos="zoom-in">
+                        <img class="card-img-top"
+                             src="https://picsum.photos/200"
+                             height="200"
+                             alt="Card image"
+                             style="object-fit: cover;">
+                        <div class="card-body">
+                            <h6 class="card-title">DIGICOM ECOMMERCE EXTENSION</h6>
+                            <p class="card-text">
+                                Some example text some example text. John Doe is an architect and engineer
+                            </p>
+                            <button type="button" class="common-btn common-btn-dark">read more</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" data-aos="zoom-in">
+                        <img class="card-img-top"
+                             src="https://picsum.photos/200"
+                             height="200"
+                             alt="Card image"
+                             style="object-fit: cover;">
+                        <div class="card-body">
+                            <h6 class="card-title">ONEPAGER - ONEPAGE BUILDER</h6>
+                            <p class="card-text">
+                                Some example text some example text. John Doe is an architect and engineer
+                            </p>
+                            <button type="button" class="common-btn common-btn-dark">read more</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" data-aos="zoom-in">
+                        <img class="card-img-top"
+                             src="https://picsum.photos/200"
+                             height="200"
+                             alt="Card image"
+                             style="object-fit: cover;">
+                        <div class="card-body">
+                            <h6 class="card-title">QUIX PAGE BUILDER</h6>
+                            <p class="card-text">
+                                Some example text some example text. John Doe is an architect and engineer
+                            </p>
+                            <button type="button" class="common-btn common-btn-dark">read more</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--   Contact   -->
+
+    <section id="contact" class="contact py-5">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span>contact</span>send us message
+            </h2>
+            <div class="contact-form mt-5">
+                <form data-aos="fade-up">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="subject" placeholder="Your Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message"></textarea>
+                    </div>
+                    <div class="btn">
+                        <button type="button" class="common-btn common-btn-dark">contact us</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!--   Footer   -->
+
+    <footer id="footer" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <i class="fa fa-phone"></i>
+                    <p>Phone : (999) 000-122-233</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fa fa-star"></i>
+                    <p>Molestie ultricies quam. Donec at sem. Praesent pretium. Maorbi quis nulla vehicula felsd
+                        laoreet.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fa fa-map-marker-alt"></i>
+                    <p>123 state, South America, 205</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</main>
+
+<!-- Scripts -->
+<script>
+    // animation on scroll
+    AOS.init();
+
+    // sticky navbar
+    $(window).scroll(function () {
+        if ($(this).scrollTop()) {
+            $('nav').addClass('sticky');
+        } else {
+            $('nav').removeClass('sticky');
+        }
+    });
+
+    $(document).ready(function () {
+
+        // portfolio filter
+        $(".filter-button").click(function () {
+            var value = $(this).attr('data-filter');
+            if (value == "all") {
+                $('.filter').show('1000');
+            } else {
+                $(".filter").not('.' + value).hide('3000');
+                $('.filter').filter('.' + value).show('3000');
+            }
+        });
+        if ($(".filter-button").removeClass("active")) {
+            $(this).removeClass("active");
+        }
+        $(this).addClass("active");
+    });
+</script>
+</body>
+</html>

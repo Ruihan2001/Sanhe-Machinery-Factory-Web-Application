@@ -1,0 +1,9 @@
+.idea
+.DS_Store
+/appdir/__pycache__
+/appdir/sitemap.xml
+/appdir/static/sitemap.xml
+/appdir/static/robots.txt
+/appdir/data.sqlite
+/appdir/.DS_Store
+#/migrations/

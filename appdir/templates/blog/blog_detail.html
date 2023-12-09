@@ -1,0 +1,399 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+{% extends "blog/blog_base.html" %}<!---extends the index.html-->
+
+{% block css %}
+    <style>
+        .breadcrumb-area {
+            position: relative;
+        }
+
+        .breadcrumb-area:after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url(/static/images/background/gears.jpg);
+            opacity: 0.8;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <!-- breadcrumb-area -->
+    <div class="col-lg-8">
+        <section class="breadcrumb-area d-flex align-items-center">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="breadcrumb-wrap text-left"
+                             style="z-index: 3;position: absolute;top: -60px;">
+                            <div class="breadcrumb-title">
+                                <h2>Blog Details</h2>
+                                <div class="breadcrumb-wrap">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            {#                                            <li class="breadcrumb-item active" aria-current="page">Blog Deatils</li>#}
+                                            <li class="breadcrumb-item"><a href="#" onclick="window.history.back();"><-
+                                                Back</a></li>
+                                            <li class="breadcrumb-item"><a href="/blog/index">Move to NEWs Center -></a>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- breadcrumb-area-end -->
+        <!-- inner-blog -->
+        <section class="inner-blog b-details-p pt-120 pb-80">
+            <div class="container">
+                <div class="row">
+                    <div>
+                        <div class="blog-detailss-wrap">
+                            <div class="details__content pb-30">
+                                <h2>{{ blog.blog_title }}</h2>
+                                <div class="meta-info">
+                                    <ul>
+                                        {#                                        <li><i class="fal fa-eye"></i> {{ blog.view_times }} Views</li>#}
+                                        <li><i class="fal fa-comments"></i> {{ blog.comment_number }} Comments</li>
+                                        <li><i class="fal fa-calendar-alt"></i> {{ blog.blog_time }}</li>
+                                    </ul>
+                                </div>
+                                <div class="blog_detail_text">
+                                    {{ blog.blog_content|safe }}
+                                </div>
+                                {% if imgs | count == 0 %}
+                                    {% if blog.blog_image_route %}
+                                        <div style=" text-align: center">
+                                            <img style="margin: 0 auto; width:80%;margin-top: 15px;"
+                                                 src="../{{ blog.blog_image_route }}" alt="courses-img1">
+                                        </div>
+                                    {% endif %}
+                                {% elif imgs | count == 1 %}
+                                    <div style=" text-align: center"><img
+                                            style="margin: 0 auto; width:80%;margin-top: 15px;"
+                                            src="/static/images/blog_img/{{ imgs[0].img_path }}">
+                                    </div>
+                                {% else %}
+                                    {% for img in imgs %}
+                                        <div style=" text-align: center"><img
+                                                style="margin: 0 auto; width:80%;margin-top: 15px;"
+                                                src="/static/images/blog_img/{{ img.img_path }}">
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+
+                                {#                            <figure>#}
+                                {#                                <img src="{{ url_for('static',filename='../static/images/background/news_machine3.jpg') }}">#}
+                                {##}
+                                {#                            </figure>#}
+
+
+                                <div class="row">
+                                    <div class="col-xl-12 col-md-12">
+                                        <div class="post__tag">
+                                            <h5>Releted Tags</h5>
+                                            <ul>
+                                                {% for tag in tags %}
+                                                    <li><a href="/blog/all?type={{ tag }}">{{ tag }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="posts_navigation pt-35 pb-35">
+                                <div class="row align-items-center">
+                                    <div class="col-xl-4 col-md-5">
+                                        <div class="prev-link">
+                                            {% if blog_prev %}
+                                                <a href="{{ blog_prev.id }}">Prev Post</a>
+                                            {% else %}
+                                                <a>First</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-2 text-left text-md-center">
+                                        <a href="../index" class="blog-filter"><img
+                                                src="{{ url_for('static',filename='../static/news/img/icon/c_d01.png') }}"></a>
+                                    </div>
+                                    <div class="col-xl-4 col-md-5">
+                                        <div class="next-link text-left text-md-right">
+                                            {% if blog_next %}
+                                                <a href="{{ blog_prev.id }}">Next Post</a>
+                                            {% else %}
+                                                <a>End</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% if blog_random | count == 0 %}
+                            {% else %}
+                                <div class="related__post mt-45 mb-85">
+                                    <div class="post-title">
+                                        <h4>Related Post</h4>
+                                    </div>
+                                    <div class="row">
+                                        {% for br in blog_random %}
+                                            <div class="col-md-6">
+                                                <div class="related-post-wrap mb-30">
+                                                    <div class="post-thumb">
+                                                        {% if br.blog_image_route %}
+                                                            <img src="../{{ br.blog_image_route }}">
+                                                        {% else %}
+                                                            <img src="/static/images/blog_img/empty_cover.jpeg">
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="rp__content" style="height: 255px">
+                                                        <h3>
+                                                            <a href="\blog\blog_details\{{ br.id }}"
+                                                               style="text-overflow: ellipsis;display: -webkit-box;
+                                                           -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                                                {{ br.blog_title }}
+                                                            </a>
+                                                        </h3>
+                                                        <p style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
+                                                        -webkit-line-clamp: 3;-webkit-box-orient: vertical;">
+                                                            {{ br.blog_content }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            <div class="avatar__wrap text-center mb-45">
+                                <div class="avatar-img">
+                                    <img style="height: 120px;width: 120px"
+                                         src="{{ blog.author_avatar }}">
+                                </div>
+
+                                <div class="avatar__info">
+
+                                    <h5>{{ blog.author }}</h5>
+
+                                    {#                                    <div class="avatar__info-social">#}
+                                    {#                                        <a href="#"><i class="fab fa-facebook-f"></i></a>#}
+                                    {#                                        <a href="#"><i class="fab fa-twitter"></i></a>#}
+                                    {#                                        <a href="#"><i class="fab fa-instagram"></i></a>#}
+                                    {#                                        <a href="#"><i class="fab fa-behance"></i></a>#}
+                                    {#                                        <a href="#"><i class="fab fa-linkedin"></i></a>#}
+                                    {#                                    </div>#}
+                                </div>
+
+                                {#                                <div class="avatar__wrap-content">#}
+                                {#                                    <p>As a regular customer of Sanhe Company, I am very satisfied with their products,#}
+                                {#                                        which are of the best quality and the most cost-effective I have ever seen.</p>#}
+                                {#                                </div>#}
+                            </div>
+                            <div class="comment__wrap pb-45">
+                                <div class="comment__wrap-title">
+                                    <h5>Comments</h5>
+                                </div>
+                                {% if comment | length == 0 %}
+                                    no comment yet
+                                {% else %}
+                                    {% for c in comment %}
+                                        <div class="single__comment mb-35">
+                                            <div class="comments-avatar">
+                                                <img src="{{ c.comment_avatar_route }}">
+
+                                            </div>
+                                            <div class="comment-text">
+                                                <div class="avatar-name mb-15">
+                                                    <h6>{{ c.comment_author }}</h6>
+                                                    <span>{{ c.comment_time }}</span>
+                                                    {#                                                <a href="#" class="comment-reply"><i class="fas fa-reply"></i>Reply</a>#}
+                                                </div>
+                                                <p>{{ c.content }}</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+
+                                {% if user %}
+                                    <div id="comments" class="comments-area mt-90">
+                                        <div id="respond" class="comment-respond">
+                                            <h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a
+                                                    rel="nofollow"
+                                                    id="cancel-comment-reply-link"
+                                                    href="#"
+                                                    style="display:none;">Cancel
+                                                reply</a></small></h3>
+                                            {#                                <form action="http://wordpress.zcube.in/finco/wp-comments-post.php" method="post"#}
+                                            {#                                      id="commentform" class="comment-form" novalidate="">#}
+                                            {#                                    <p class="comment-notes"><span id="email-notes">Your email address will not be published.</span>#}
+                                            {#                                        Required fields are marked <span class="required">*</span></p>#}
+                                            {#                                    <p class="comment-field"><i class="fas fa-user"></i><input id="author"#}
+                                            {#                                                                                               placeholder="Your Name"#}
+                                            {#                                                                                               name="author"#}
+                                            {#                                                                                               type="text"></p>#}
+                                            {#                                    <p class="comment-field"><i class="fas fa-envelope"></i><input id="email"#}
+                                            {#                                                                                                   placeholder="your-real-email@example.com"#}
+                                            {#                                                                                                   name="email"#}
+                                            {#                                                                                                   type="text"></p>#}
+                                            {#                                    <p class="comment-field"><i class="fas fa-globe"></i><input id="url" name="url"#}
+                                            {#                                                                                                placeholder="http://your-site-name.com"#}
+                                            {#                                                                                                type="text"></p>#}
+                                            {#                                    <p class="comment-form-comment"><label for="comment">Comment</label> <textarea#}
+                                            {#                                            id="comment" name="comment" cols="45" rows="8" maxlength="65525"#}
+                                            {#                                            required="required"></textarea></p>#}
+                                            {#                                    <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit"#}
+                                            {#                                                                  value="Post Comment"> <input type="hidden"#}
+                                            {#                                                                                               name="comment_post_ID"#}
+                                            {#                                                                                               value="2112"#}
+                                            {#                                                                                               id="comment_post_ID">#}
+                                            {#                                        <input type="hidden" name="comment_parent" id="comment_parent" value="0">#}
+                                            {#                                    </p>#}
+                                            {#                                </form>#}
+
+                                            <form action="" method="POST" id="commentform" class="comment-form"
+                                                  novalidate="">
+                                                <p class="comment-notes"><span id="email-notes">
+                                                Attention! Please make sure your comments are positive.
+                                                <br> We test your comments using a machine learning model before anyone else can see them.
+                                                <br> In addition, if our reviewers find a problem with your comment, we have the right to remove it without notifying you.
+                                            </span>
+                                                </p>
+                                                {#                                            {{ form.csrf_token }}#}
+                                                <p class="comment-form-comment"><label
+                                                        for="comment">Comment</label>{{ form.comment }}</p>
+                                                <p class="form-submit">
+                                                    <input class="submit" id="submit" name="submit"
+                                                           placeholder="Post Comment" type="submit"
+                                                           value="Post Comment"></p>
+                                                {#                                            <input name="csrf_token" type="hidden" value="{{ csrf_token }}">#}
+                                            </form>
+                                        </div>
+                                        <!-- #respond -->
+                                    </div>
+                                {% else %}
+                                    <div id="comments" class="comments-area mt-90">
+                                        <div id="respond" class="comment-respond">
+                                            <h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a
+                                                    rel="nofollow" id="cancel-comment-reply-link" href="#"
+                                                    style="display:none;">Cancel
+                                                reply</a></small></h3>
+                                            <form id="commentform" class="comment-form"
+                                                  novalidate="" action="">
+                                                <p class="comment-notes"><span id="email-notes">You need to log in to comment</span>
+                                                </p>
+                                                <p class="form-submit">
+                                                    <input id="move-to-login"
+                                                           placeholder="Move to Login" type="submit"
+                                                           value="Move to Login"></p>
+                                            </form>
+                                        </div>
+                                        <!-- #respond -->
+                                    </div>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+{% block script %}
+    <script src="../../static/staff/dist/js/ckeditor-classic.js"></script>
+    <script src="{{ url_for('static',filename='js/zalert.js') }}" rel="script"></script>
+    <script>
+        function getCookie(name) {
+            // 拆分 cookie 字符串
+            var cookieArr = document.cookie.split(";");
+            console.log("post_data", cookieArr)
+            // 循环遍历数组元素
+            for (var i = 0; i < cookieArr.length; i++) {
+                var cookiePair = cookieArr[i].split("=");
+
+                if (name === cookiePair[0].trim()) {
+                    // 解码cookie值并返回
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            // 如果未找到，则返回null
+            return null;
+        }
+
+        $(document).ready(function () {
+            $('#move-to-login').on('click', function (e) {
+                e.preventDefault();
+                window.location.href = "/sanhe/auth/login"
+            });
+
+            $('#submit').on('click', function (e) {
+                //该命令时取消表单的默认提交
+                //防止默认提交后跳转
+                e.preventDefault();
+                //用POST方法提交，把整个form提交到后台
+                var post_data = $('#commentform').serialize();
+                {#post_data["jwt"] = getCookie('csrf_access_token')#}
+                {#console.log(getCookie('jwt'))#}
+                console.log("post_data", post_data)
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': getCookie('csrf_access_token'),
+                    },
+                    url: '',
+                    method: 'POST',
+                    dataType: 'json',//后台返回json格式的返回值
+                    data: post_data,
+                    success: function (response) {
+                        console.log("success", response)
+                        //如果想把后台返回回来的json对象转字符
+                        //用JSON.stringify(response)转字符
+                        for (var key in response) {
+                            // alert(response[key]);
+                            console.log(response[key])
+                        }
+                        zlalert.alertInfoToast('Please wait a few seconds while we are checking if your comment is positive ~');
+                        if (response.code === 200) {
+                            setTimeout(() => {
+                                zlalert.alertInfoToast('Your comments have been posted ～')
+                                setTimeout(() => {
+                                    window.location.reload(true);
+                                }, 2000)
+                            }, 2000)
+                            {#zlalert.alertSuccessToast("You have successfully commented, thanks for your review.")#}
+                        } else if (response.code === 412) {
+                            setTimeout(() => {
+                                zlalert.alertInfoToast('Your comment has been automatically blocked. Please don\'t include the following words in your comments: ' + response.message);
+                            }, 2000)
+                        } else if (response.code === 413) {
+                            setTimeout(() => {
+                                zlalert.alertInfoToast('Your comments are flagged:< Although it has been published, we may remove it later. Please don\'t leave malicious comments.');
+                                setTimeout(() => {
+                                    window.location.reload(true);
+                                }, 4000)
+                            }, 2000)
+                        }
+                    },
+                });
+            });
+        });
+
+    </script>
+{% endblock %}
+
+
+</html>

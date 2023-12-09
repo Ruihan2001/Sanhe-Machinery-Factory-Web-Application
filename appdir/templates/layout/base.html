@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="referrer" content="no-referrer">
+    <title>
+        {% block title %} Course Platform of BDIC {% endblock %}
+    </title>
+    {% block styles %}
+        <link rel="stylesheet" href="{{ url_for('static',filename='style_dark/basic.css') }}">
+        <link href="{{ url_for('static',filename='images/icon.ico') }}" type="image/x-icon" rel="shortcut icon">
+    {% endblock styles %}
+    {% block extra_styles %}
+    {% endblock %}
+    {% block scripts %}
+    {% endblock scripts %}
+    <script src="{{ url_for('static',filename='script/jquery-3.4.1.js') }}"></script>
+    <script src="{{ url_for('static',filename='script/flash.js') }}"></script>
+</head>
+
+<body>
+{% block navbar %}
+    <div class="header">
+        {#                <div class="cover"></div>#}
+        <!-- 1. logo starts -->
+        <div class="logo">
+            <img class="image" src={{ url_for('static',filename='images/logo2.png') }}>
+        </div>
+        <!-- 1. logo ends-->
+
+        <!-- 2. nav starts -->
+        <div class="nav">
+            <ul>
+                <li><a href="/course/main">Main</a></li>
+                <li><a href="/course/create">Create</a></li>
+            </ul>
+        </div>
+        <!-- 2. nav ends -->
+
+        <!-- 3. search starts-->
+        {% block search %}
+            <div class="search">
+                <input disabled="true" type="text" placeholder="Jump to Search">
+                <button class="search-button"></button>
+            </div>
+        {% endblock %}
+        <!-- 3. search ends-->
+
+        <!--4. user starts-->
+        <!-- user identity: user/visitor -->
+        {% if user %}
+            <!-- user avatar -->
+            <div class="user_detail">
+                <div class="avatar">
+                    <a href='/user/info/{{ user.id }}/main'>
+                        <img class="avatar_img" src="/static/images/avatar/avatar ({{ user.avatar }}).png" alt=""> </a>
+                </div>
+                <div class="name">
+                    <span><a href='/user/space/{{ user.id }}'>{{ user.username }}</a></span>
+                </div>
+                <div class="notify">
+                    <span>
+                        <a class="nav-notify" href='/user/info/{{ user.id }}/notify'> Notice
+                            <img class="avatar_img" src="/static/images/icon/icon-notice.png" alt="">
+                        </a>
+                    </span>
+                </div>
+            </div>
+        {% else %}
+            <div class="user_detail">
+                <div class="avatar">
+                    <a href='/auth/login'>
+                        <img class="avatar_img" src="/static/images/user.png" alt=""> </a>
+                </div>
+                <div class="name">
+                    <span><a href='/auth/login'>Visitor</a></span>
+                </div>
+            </div>
+        {% endif %}
+        <!--4. user ends-->
+
+        <!-- 5. logout/login starts -->
+        <div class="logout">
+            <!-- show logout button when the user has log in-->
+            {% if user %}
+                <a href="/main/logout">
+                    <button class="logout-button">Log Out</button>
+                </a>
+                <!-- show login button when the visitor has not log in -->
+            {% else %}
+                <a href="/auth/login">
+                    <button class="login-button">Log In</button>
+                </a>
+            {% endif %}
+        </div>
+        <!-- 5. logout/login ends -->
+
+        <!-- 6. change mode start -->
+        <div class="change-mode">
+            <span>
+                    {% if MODE == "DARK" %}
+                        <img class="change_img" src="/static/images/icon/icon-change-d.png" alt="">
+                    {% else %}
+                        <img class="change_img" src="/static/images/icon/icon-change-b.png" alt="">
+                    {% endif %}
+            </span>
+        </div>
+        <!-- 6. change mode ends -->
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <!--    flash information  -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages|reverse %}
+                    <!--   only flash the newest item  -->
+                    {% if loop.index == 1 %}
+                        <div class="alert-warning">
+                            <span> {{ message }}</span>
+                            <button type="button" class="flash-close" data-dismiss="alert">&times;</button>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block page_content %}
+            <!--   other pages-->
+        {% endblock %}
+    </div>
+{% endblock %}
+</body>
+<script src="{{ url_for('static',filename='script/base.js') }}" rel="script"></script>
+</html>

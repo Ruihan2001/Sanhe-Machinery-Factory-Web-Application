@@ -1,0 +1,322 @@
+{% extends "staff/stabase.html" %}
+{% block content %}
+    <style>
+        .traffic-site {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 195px;
+        }
+
+        .active {
+            background-color: antiquewhite;
+        }
+    </style>
+    <div class="content">
+        <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12 2xl:col-span-9">
+                <div class="grid grid-cols-12 gap-6">
+                    <!-- BEGIN: General Report -->
+                    <div class="col-span-12 mt-8">
+                        <div class="intro-y flex items-center h-10">
+                            <h2 class="text-lg font-medium truncate mr-5">
+                                General Report
+                            </h2>
+                            <a href="" class="ml-auto flex items-center text-primary">
+                                <i data-lucide="refresh-ccw" class="w-4 h-4 mr-3"></i>Reload Data </a>
+                        </div>
+                        <div class="grid grid-cols-12 gap-6 mt-5">
+                            <div class="col-span-12 sm:col-span-3 2xl:col-span-3 intro-y">
+                                <div class="report-box zoom-in">
+                                    <div class="box p-5 zoom-in">
+                                        <div class="flex">
+                                            <div class="text-lg font-medium truncate mr-3">Videos Uploaded</div>
+                                            <div class="py-1 px-2 flex items-center rounded-full text-xs bg-slate-100 dark:bg-darkmode-400 text-slate-500 cursor-pointer ml-auto truncate">
+                                                27
+                                            </div>
+                                        </div>
+                                        <div class="mt-1">
+                                            <div class="h-[58px]">
+                                                <canvas class="simple-line-chart-1 -ml-1" width="910" height="116"
+                                                        style="display: block; box-sizing: border-box; height: 58px; width: 455px;"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-12 sm:col-span-3 2xl:col-span-3 intro-y">
+                                <div class="report-box zoom-in">
+                                    <div class="box p-5 zoom-in">
+                                        <div class="flex">
+                                            <div class="text-lg font-medium truncate mr-3">Subscribers</div>
+                                            <div class="py-1 px-2 flex items-center rounded-full text-xs bg-slate-100 dark:bg-darkmode-400 text-slate-500 cursor-pointer ml-auto truncate">
+                                                38
+                                            </div>
+                                        </div>
+                                        <div class="mt-1">
+                                            <div class="h-[58px]">
+                                                <canvas class="simple-line-chart-1 -ml-1" width="910" height="116"
+                                                        style="display: block; box-sizing: border-box; height: 58px; width: 455px;"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                                <div class="report-box zoom-in">
+                                    <div class="box p-5">
+                                        <div class="flex">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                 icon-name="shopping-cart" data-lucide="shopping-cart"
+                                                 class="lucide lucide-shopping-cart report-box__icon text-primary">
+                                                <circle cx="9" cy="21" r="1"></circle>
+                                                <circle cx="20" cy="21" r="1"></circle>
+                                                <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="text-3xl font-medium leading-8" style="text-align: center;">
+                                            {{ products_count }}
+                                        </div>
+                                        <div class="text-base text-slate-500 mt-1" style="text-align: center;">
+                                            Products Displayed
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                                <div class="report-box zoom-in">
+                                    <div class="box p-5">
+                                        <div class="flex">
+                                            <i data-lucide="monitor" class="report-box__icon"></i>
+                                        </div>
+                                        <div class="text-3xl font-medium leading-8" style="text-align: center;">
+                                            {{ news_count }}
+                                        </div>
+                                        <div class="text-base text-slate-500 mt-1" style="text-align: center;">
+                                            News Displayed
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END: General Report -->
+                    <!-- BEGIN: Sales Report -->
+                    <div class="col-span-12 lg:col-span-6 mt-8">
+                        <div class="intro-y block sm:flex items-center h-10">
+                            <h2 class="text-lg font-medium truncate mr-5">
+                                Video Display Report
+                            </h2>
+                            <div class="sm:ml-auto mt-3 sm:mt-0 relative text-slate-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" icon-name="youtube" data-lucide="youtube"
+                                     class="lucide lucide-youtube w-4 h-4 z-10 absolute my-auto inset-y-0 ml-3 left-0">
+                                    <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"></path>
+                                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                                </svg>
+
+                                <button class="btn btn-outline-secondary sm:w-50 box pl-10">
+                                    See in Youtube Studio
+                                </button>
+                            </div>
+                        </div>
+                        <div class="intro-y box p-5 mt-12 sm:mt-5">
+                            <div class="flex flex-col md:flex-row md:items-center">
+                                <div>
+                                    <div class="flex" style="
+    align-items: center;
+">
+                                        <div class="text-primary dark:text-slate-300 text-lg xl:text-xl font-medium">
+                                            Total Views:
+                                        </div>
+                                        <div class="mt-0.5 text-slate-500 ml-2">
+                                            35436
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="report-chart">
+                                <div class="h-[275px]">
+                                    <canvas id="report-line-chart" class="mt-6 -mb-6" width="921" height="550"
+                                            style="display: block; box-sizing: border-box; height: 275px; width: 460.5px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END: Sales Report -->
+                    <!-- BEGIN: Weekly Top Seller -->
+                    <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-6">
+                        <!-- BEGIN: Visitors -->
+                        <div class="col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 mt-2">
+                            <div class="intro-y flex items-center h-10">
+                                <h2 class="text-lg font-medium truncate mr-5">
+                                    Visitors
+                                </h2>
+                                <a href="#" class="ml-auto text-primary truncate"></a>
+                            </div>
+                            <div class="report-box-2 intro-y mt-5">
+                                <div class="box p-5">
+                                    <div class="flex items-center">
+                                        Realtime page views
+                                        {#                                        <div class="dropdown ml-auto">#}
+                                        {#                                            <a class="dropdown-toggle w-5 h-5 block -mr-2" href="javascript:;"#}
+                                        {#                                               aria-expanded="false" data-tw-toggle="dropdown"> <i#}
+                                        {#                                                    data-lucide="more-vertical" class="w-5 h-5 text-slate-500"></i> </a>#}
+                                        {#                                            <div class="dropdown-menu w-40">#}
+                                        {#                                                <ul class="dropdown-content">#}
+                                        {#                                                    <li>#}
+                                        {#                                                        <a href="" class="dropdown-item"> <i data-lucide="file-text"#}
+                                        {#                                                                                             class="w-4 h-4 mr-2"></i>#}
+                                        {#                                                            Export </a>#}
+                                        {#                                                    </li>#}
+                                        {#                                                    <li>#}
+                                        {#                                                        <a href="" class="dropdown-item"> <i data-lucide="settings"#}
+                                        {#                                                                                             class="w-4 h-4 mr-2"></i>#}
+                                        {#                                                            Settings </a>#}
+                                        {#                                                    </li>#}
+                                        {#                                                </ul>#}
+                                        {#                                            </div>#}
+                                        {#                                        </div>#}
+                                    </div>
+                                    <div class="text-2xl font-medium mt-2" id="realTimeView"></div>
+                                    <div class="border-b border-slate-200 flex pb-4 mt-4">
+                                        <div class="text-slate-500 text-xs">per 5 seconds page views</div>
+                                        {#                                        <div class="text-success flex text-xs font-medium tooltip cursor-pointer ml-auto"#}
+                                        {#                                             title="49% Lower than last month"> 49% #}
+                                        {#                                            <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i>#}
+                                        {#                                        </div>#}
+                                    </div>
+                                    <div class="mt-2 border-b broder-slate-200">
+                                        <div class="-mb-1.5 -ml-2.5">
+                                            <div class="h-[215px]">
+                                                <canvas id="report-bar-chart"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END: Visitors -->
+                    </div>
+                    <!-- END: Weekly Top Seller -->
+                    <!-- BEGIN: Weekly Top Seller -->
+                    <div class="col-span-12 sm:col-span-6 lg:col-span-3 mt-6">
+                        <!-- BEGIN: Visitors -->
+                        <div class="col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 mt-2">
+                            <div class="intro-y flex items-center h-10">
+                                <h2 class="text-lg font-medium truncate mr-5">
+                                    Pages Visited
+                                </h2>
+                                <a href="" class="ml-auto text-primary truncate"> </a>
+                            </div>
+                            <div class="report-box-2 intro-y mt-5">
+                                <div class="box p-5" id="page_views">
+                                    <div class="text-slate-500 text-xs border-b border-slate-200 flex mb-1 pb-3">
+                                        <div>Top Active Pages</div>
+                                        <div class="ml-auto">View Count</div>
+                                    </div>
+                                    {#                                    <div class="flex mt-1.5">#}
+                                    {#                                        <div>/letz-lara…review/2653</div>#}
+                                    {#                                        <div class="ml-auto">472</div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="flex mt-1.5">#}
+                                    {#                                        <div>/midone…review/1674</div>#}
+                                    {#                                        <div class="ml-auto">294</div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="flex mt-1.5">#}
+                                    {#                                        <div>/profile…review/46789</div>#}
+                                    {#                                        <div class="ml-auto">83</div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="flex mt-1.5">#}
+                                    {#                                        <div>/profile…review/24357</div>#}
+                                    {#                                        <div class="ml-auto">21</div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="flex mt-1.5">#}
+                                    {#                                        <div>/letz-lara…review/2653</div>#}
+                                    {#                                        <div class="ml-auto">472</div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="flex mt-1.5">#}
+                                    {#                                        <div>/midone…review/1674</div>#}
+                                    {#                                        <div class="ml-auto">294</div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="flex mt-1.5">#}
+                                    {#                                        <div>/profile…review/46789</div>#}
+                                    {#                                        <div class="ml-auto">83</div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="flex mt-1.5">#}
+                                    {#                                        <div>/profile…review/24357</div>#}
+                                    {#                                        <div class="ml-auto">21</div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="flex mt-1.5">#}
+                                    {#                                        <div>/profile…review/24357</div>#}
+                                    {#                                        <div class="ml-auto">21</div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="flex mt-1.5">#}
+                                    {#                                        <div>/profile…review/24357</div>#}
+                                    {#                                        <div class="ml-auto">21</div>#}
+                                    {#                                    </div>#}
+                                    <div class="flex">
+                                        <button class="btn btn-outline-secondary border-dashed w-2/5 py-1 px-2 mt-4">
+                                            Products
+                                        </button>
+                                        <button class="btn btn-outline-secondary border-dashed w-2/5 py-1 px-2 mt-4">
+                                            Blogs
+                                        </button>
+                                        <button class="btn btn-outline-secondary border-dashed  py-1 px-2 mt-4">
+                                            All
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END: Visitors -->
+                    </div>
+                    <!-- END: Weekly Top Seller -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    {#    <script src="../../static/staff/dist/js/add_post.js"></script>#}
+    <script>
+        $(".report-box-2").on('click', ".switch-btn-p", function () {
+            button_status = 1;
+
+            console.log("dsabutton_status", button_status)
+        });
+        $(".report-box-2").on('click', ".switch-btn-a", function () {
+            button_status = 0;
+
+            console.log("dsabutton_status", button_status)
+        });
+        $(".report-box-2").on('click', ".switch-btn-b", function () {
+            button_status = 2;
+            console.log("dsabutton_status", button_status)
+        });
+    </script>
+    <script>
+        $(".side-menu").on("click", function () {
+            if ($(this).parent().find("ul").length) {
+                if ($(this).parent().find("ul").first()[0].offsetParent !== null) {
+                    $(this).find(".side-menu__sub-icon").removeClass("transform rotate-180");
+                    $(this).removeClass("side-menu--open");
+                    $(this).parent().find("ul").first().slideUp(300, function () {
+                        $(this).removeClass("side-menu__sub-open");
+                    });
+                } else {
+                    $(this).find(".side-menu__sub-icon").addClass("transform rotate-180");
+                    $(this).addClass("side-menu--open");
+                    $(this).parent().find("ul").first().slideDown(300, function () {
+                        $(this).addClass("side-menu__sub-open");
+                    });
+                }
+            }
+        });
+    </script>
+{% endblock %}

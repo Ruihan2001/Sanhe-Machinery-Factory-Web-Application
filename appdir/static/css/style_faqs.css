@@ -1,0 +1,192 @@
+p {
+    margin-bottom: 0 !important;
+}
+
+.fl-row-content:before, .fl-row-content:after, .fl-col-group:before, .fl-col-group:after, .fl-col:before, .fl-col:after, .fl-module:before, .fl-module:after, .fl-module-content:before, .fl-module-content:after {
+    display: table;
+    content: " ";
+}
+
+.fl-row-content:after, .fl-col-group:after, .fl-col:after, .fl-module:after, .fl-module-content:after {
+    clear: both;
+}
+
+.fl-row-content, .fl-col-group, .fl-col, .fl-module, .fl-module-content {
+    zoom: 1;
+}
+
+.fl-clearfix:before, .fl-clearfix:after {
+    display: table;
+    content: " ";
+}
+
+.fl-clearfix:after {
+    clear: both;
+}
+
+.fl-clearfix {
+    zoom: 1;
+}
+
+.fl-row-content {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fl-row-content-wrap {
+    margin-top: 70px;
+    padding: 20px;
+    position: relative;
+}
+
+.fl-col {
+    float: left;
+    min-height: 1px;
+}
+
+
+.fl-row-fixed-width {
+    max-width: 1100px;
+}
+
+.fl-module-content {
+    margin: 10px;
+}
+
+@media (max-width: 768px) {
+    .fl-row-content-wrap {
+        background-attachment: scroll !important;
+    }
+
+    .fl-col {
+        clear: both;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto !important;
+    }
+
+    .fl-col .fl-col-content {
+        border-left: none;
+        border-right: none;
+        margin: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.fl-accordion-button {
+    cursor: pointer;
+    display: table;
+}
+
+.fl-accordion-button-label {
+    display: table-cell;
+    width: 100%;
+}
+
+.fl-accordion-button-icon {
+    display: table-cell;
+    line-height: inherit;
+    opacity: .5;
+    filter: alpha(opacity=50);
+    padding-left: 15px;
+    vertical-align: middle;
+}
+
+.fl-accordion-content {
+    display: none;
+}
+
+.fl-accordion-small .fl-accordion-button {
+    padding: 10px 15px;
+}
+
+.fl-accordion-small .fl-accordion-content {
+    padding: 0 30px 10px 15px;
+}
+
+.fl-node .fl-accordion-item {
+    margin-bottom: 20px;
+}
+
+.fl-node > .fl-module-content {
+    margin: 0;
+}
+
+
+.fl-accordion-item {
+    position: relative;
+    margin: 0 0 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid transparent;
+}
+
+
+.fl-accordion-item .fl-accordion-button {
+    padding: 20px 78px !important;
+    line-height: 40px;
+    background: #f7f7f7;
+    font-size: 18px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.fl-accordion-item .fl-accordion-button:after {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    content: "?";
+    width: 35px;
+    height: 36px;
+    text-align: center;
+    line-height: 36px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #FFF;
+}
+
+.fl-accordion-small .fl-accordion-content {
+    padding-top: 10px !important;
+}
+
+
+.fl-accordion-item .fl-accordion-button {
+    -moz-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.fl-accordion-button-label {
+    color: #000;
+}
+
+
+.fl-accordion-item-active .fl-accordion-button:after {
+    color: #bd150d
+}
+
+
+.fl-accordion-item-active .fl-accordion-button-label {
+    color: #fff;
+}
+
+
+.fl-accordion-item-active .fl-accordion-button {
+    background: #bd150d;
+    color: #FFF;
+    position: relative;
+    border-radius: 8px 0 0 0;
+}
+
+.fl-accordion-item-active .fl-accordion-content {
+    position: relative;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    border: 1px solid #bd150d;
+}
+    

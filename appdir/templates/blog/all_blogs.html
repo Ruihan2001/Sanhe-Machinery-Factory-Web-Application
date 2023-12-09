@@ -1,0 +1,49 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+{% extends "blog/blog_base.html" %}<!---extends the index.html-->
+{% block content %}
+
+    <div class="col-lg-8">
+        {% for b in blogs %}
+            <div class="bsingle__post mb-50">
+                {% if b.blog_image_route %}
+                    <div class="bsingle__post-thumb">
+                        <img src="{{ b.blog_image_route }}" alt="cover">
+                    </div>
+                {% endif %}
+
+                <div class="bsingle__content">
+                    <div class="admin">
+                        <a href="#"><i class="far fa-user"></i> by {{ b.author }}</a>
+                    </div>
+
+
+                    <h2><a href="\blog\blog_details\{{ b.id }}">{{ b.blog_title }}</a></h2>
+                    <div style="overflow: hidden;text-overflow:ellipsis;display: -webkit-box;-webkit-line-clamp:6 ;-webkit-box-orient: vertical">
+                        <p style="text-align: justify;">{{ b.blog_content|safe }}</p></div>
+                    <div class="meta-info">
+                        <ul>
+                            {#                                    <li><i class="fal fa-eye"></i> {{ b.view_times }} Views</li>#}
+                            <li><i class="fal fa-comments"></i> {{ b.comment_number }} Comments</li>
+                            <li><i class="fal fa-calendar-alt"></i> {{ b.blog_time }}</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+
+
+
+
+    </div>
+
+
+
+
+{% endblock %}
+
+
+</body>
+</html>

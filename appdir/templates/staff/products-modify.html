@@ -1,0 +1,391 @@
+{% extends "staff/stabase.html" %}
+{% block css %}
+    {{ dropzone.load_css() }}
+    {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 100px;') }}
+{% endblock %}
+{% block content %}
+    <div class="content">
+        <div class="intro-y flex items-center mt-8">
+            <h2 class="text-lg font-medium mr-auto">
+                Add Product
+            </h2>
+        </div>
+        <div class="grid grid-cols-11 gap-x-6 mt-5 pb-20">
+            <div class="intro-y col-span-11 2xl:col-span-9">
+                <!-- BEGIN: Uplaod Product -->
+                <div class="intro-y box p-5">
+                    <div style="display: none" id="new_id"></div>
+                    <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
+                        <div class="font-medium text-base flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
+                            <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Upload Product
+                        </div>
+                        <div class="mt-5">
+                            <div class="form-inline items-start flex-col xl:flex-row mt-10">
+                                <div class="form-label w-full xl:w-64 xl:!mr-10">
+                                    <div class="text-left">
+                                        <div class="flex items-center">
+                                            <div class="font-medium">Product Photos</div>
+                                            <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">
+                                                Required
+                                            </div>
+                                        </div>
+                                        <div class="leading-relaxed text-slate-500 text-xs mt-3">
+                                            <div>The image format is .jpg .jpeg .png and a minimum size of 300 x 300
+                                                pixels.
+                                            </div>
+                                            <div class="mt-2">Select product photos or drag and drop photos here. Try to upload attractive photos to make the product more
+                                                attractive to buyers.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full mt-3 xl:mt-0 flex-1 border-2 border-dashed dark:border-darkmode-400 rounded-md pt-4">
+                                    <div class="form-group">
+                                        <div id="dropz" class="dropzone"></div>
+                                    </div>
+                                    <input type="hidden" name="file_id" ng-model="file_id" id="file_id"/>
+                                    <div class="px-4 pb-4 mt-5 flex items-center justify-center cursor-pointer relative">
+                                        <i data-lucide="image" class="w-4 h-4 mr-2"></i> <span
+                                            class="text-primary mr-1">Upload a file</span> or drag and drop
+                                        <input id="horizontal-form-1" type="file"
+                                               class="w-full h-full top-0 left-0 absolute opacity-0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END: Uplaod Product -->
+                <!-- BEGIN: Product Information -->
+                <div class="intro-y box p-5 mt-5">
+                    <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
+                        <div class="font-medium text-base flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
+                            <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Product Information
+                        </div>
+                        <div class="mt-5">
+                            <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
+                                <div class="form-label xl:w-64 xl:!mr-10">
+                                    <div class="text-left">
+                                        <div class="flex items-center">
+                                            <div class="font-medium">Product Name</div>
+                                            <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">
+                                                Required
+                                            </div>
+                                        </div>
+                                        <div class="leading-relaxed text-slate-500 text-xs mt-3"> Try to make it more attractive and easy for buyers to find,
+                                            consisting of product type, brand, and information such as color, material,
+                                            or type.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full mt-3 xl:mt-0 flex-1">
+                                    <input id="product-name" type="text" class="form-control"
+                                           placeholder="Product name" value="{{ product.product_name }}">
+                                </div>
+                            </div>
+                            <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
+                                <div class="form-label xl:w-64 xl:!mr-10">
+                                    <div class="text-left">
+                                        <div class="flex items-center">
+                                            <div class="font-medium">Category</div>
+                                            <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">
+                                                Required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full mt-3 xl:mt-0 flex-1">
+                                    <input id="options" hidden value="{{ product.product_category }}">
+                                    <select id="category" class="form-select">
+                                        <option id="wood_processing" value="wood_processing">Woodworking Machine</option>
+                                        <option id="bamboo_processing" value="bamboo_processing">Bamboo Processing Machine</option>
+                                        <option id="tea_processing" value="tea_processing">Tea Processing Machine</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END: Product Information -->
+                <!-- BEGIN: Product Detail -->
+                <div class="intro-y box p-5 mt-5">
+                    <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
+                        <div class="font-medium text-base flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
+                            <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Product Detail
+                        </div>
+                        <div class="mt-5">
+
+                            <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
+                                <div class="form-label xl:w-64 xl:!mr-10">
+                                    <div class="text-left">
+                                        <div class="flex items-center">
+                                            <div class="font-medium">Product Description</div>
+                                            <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">
+                                                Required
+                                            </div>
+                                        </div>
+                                        <div class="leading-relaxed text-slate-500 text-xs mt-3">
+                                            <div>Make sure the product description provides a detailed explanation of
+                                                your product so that it is easy to understand and find your product.
+                                            </div>
+                                            <div class="mt-2">It is recommended not to enter info on mobile numbers,
+                                                e-mails, etc. into the product description to protect your personal
+                                                data.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full mt-3 xl:mt-0 flex-1">
+                                    <div class="editor">
+                                        {{ product.product_detail | safe }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-inline items-start flex-col xl:flex-row mt-6 pt-2 first:mt-0 first:pt-0">
+                                <div class="form-label xl:w-64 xl:!mr-10">
+                                    <div class="text-left">
+                                        <div class="flex items-center">
+                                            <div class="font-medium">Product Video</div>
+                                        </div>
+                                        <div class="leading-relaxed text-slate-500 text-xs mt-3"> Add the videos of
+                                            products.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full mt-3 xl:mt-0 flex-1">
+                                    <div class="relative pl-5 pr-5 xl:pr-10 py-10 bg-slate-50 dark:bg-transparent dark:border rounded-md">
+                                        <div>
+                                            <div class="form-inline mt-5 items-start first:mt-0">
+                                                <label class="form-label mt-2 sm:w-20">Videos</label>
+                                                <div class="flex-1" id="video-link">
+                                                        {% if videos|length == 1 %}
+                                                            <div class="xl:flex items-center mt-5 first:mt-0">
+                                                                <div class="input-group flex-1">
+                                                                    <input type="text" class="form-control video_link"
+                                                                           placeholder="Url Link" value="{{ videos[0].video_path }}">
+                                                                </div>
+                                                                <div class="w-20 flex text-slate-500 mt-3 xl:mt-0">
+
+                                                                </div>
+                                                            </div>
+                                                        {% elif videos|length == 0 %}
+                                                            <div class="xl:flex items-center mt-5 first:mt-0">
+                                                                <div class="input-group flex-1">
+                                                                    <input type="text" class="form-control video_link"
+                                                                           placeholder="Url Link">
+                                                                </div>
+                                                                <div class="w-20 flex text-slate-500 mt-3 xl:mt-0">
+
+                                                                </div>
+                                                            </div>
+                                                        {% elif videos|length > 1%}
+                                                            {% for link in videos %}
+                                                                {% if loop.first %}
+                                                                    <div class="xl:flex items-center mt-5 first:mt-0">
+                                                                        <div class="input-group flex-1">
+                                                                            <input type="text"
+                                                                                   class="form-control video_link"
+                                                                                   placeholder="Url Link" value="{{ link.video_path }}">
+                                                                        </div>
+                                                                        <div class="w-20 flex text-slate-500 mt-3 xl:mt-0">
+
+                                                                        </div>
+                                                            </div>
+                                                                {% else %}
+                                                                <div class="xl:flex items-center mt-5 first:mt-0">
+                                                                <div class="input-group flex-1">
+                                                                    <input type="text" class="form-control video_link"
+                                                                           placeholder="Url Link" value="{{ link.video_path }}">
+                                                                </div>
+                                                                <div class="w-20 flex text-slate-500 mt-3 xl:mt-0">
+                                                                    <button class="ml-3 xl:ml-5 delete">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                             height="24" viewBox="0 0 24 24" fill="none"
+                                                                             stroke="currentColor" stroke-width="2"
+                                                                             stroke-linecap="round" stroke-linejoin="round"
+                                                                             icon-name="trash-2" data-lucide="trash-2"
+                                                                             class="lucide lucide-trash-2 w-4 h-4">
+                                                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                                                            <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path>
+                                                                            <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                                            <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                                        </svg>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="xl:ml-20 xl:pl-5 xl:pr-20 mt-5 first:mt-0" id="add-video">
+                                                <button class="btn btn-outline-primary border-dashed w-full">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                         icon-name="plus" data-lucide="plus"
+                                                         class="lucide lucide-plus w-4 h-4 mr-2">
+                                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                    </svg>
+                                                    Add New Option
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="flex justify-end flex-col md:flex-row gap-2 mt-5">
+                    <a href="\staff\products">
+                    <button type="button"
+                            class="btn py-3 border-slate-300 dark:border-darkmode-400 text-slate-500 w-full md:w-52">
+                        Cancel
+                    </button>
+                    </a>
+                    <button type="button" class="btn py-3 btn-primary w-full md:w-52 post_product" id="submitForm">
+                        Save
+                    </button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+    <script type="text/javascript">
+        let origin_name = $("#product-name").val()
+        let selection = $("#options").val()
+        console.log(selection)
+        $("#" + selection).attr("selected", "selected")
+        let img_list = []
+        var appElement = document.querySelector('div .inmodal');
+        $.post('/staff/get_id').done(function (data) {
+            console.log("DSADSADAS", data.id);
+            var pro_id = data.id;
+            $('#new_id').val(pro_id)
+
+            let url2 = "/staff/newImages/" + pro_id
+            console.log(url2, "/staff/newImages/" + pro_id)
+            var myDropzone = new Dropzone("#dropz", {
+                url: url2,//文件提交地址
+                method: "post", //也可用put
+                paramName: "file", //默认为file
+                maxFiles: 10,//一次性上传的文件数量上限
+                maxFilesize: 2, //文件大小，单位：MB
+                acceptedFiles: ".jpg,.gif,.png,.jpeg", //上传的类型
+                addRemoveLinks: true,
+                {#parallelUploads: 1,//一次上传的文件数量#}
+                //previewsContainer:"#preview",//上传图片的预览窗口
+                dictDefaultMessage: 'Drag the file here or click upload!',
+                dictMaxFilesExceeded: "You can only upload up to 10 files!",
+                dictResponseError: 'File upload failed!',
+                dictInvalidFileType: "The file type can only be *. jpg, *. gif, *. png, *. jpeg.",
+                dictFallbackMessage: "Browser not supported",
+                dictFileTooBig: "The file exceeds the maximum support for uploading files.",
+                dictRemoveLinks: "Delete",
+                dictCancelUpload: "Cancel",
+                //对一些方法的后续处理
+                removedfile: function (file) {
+                    let index = $("#dropz .dz-preview").index($(file.previewElement))
+                    console.log("file.previewElement", file.previewElement,)
+                    file.previewElement.remove();
+
+                    console.log("index", index)
+                    img_list.splice(index, 1);
+                },
+                init: function () {
+                    this.on("addedfile", function (file) {
+                        //上传文件时触发的事件
+                        document.querySelector('div .dz-default').style.display = 'none';
+                    });
+                    this.on("success", function (file, response) {
+                        console.log("response", response);
+                        //上传成功触发的事件
+                        img_list.push(response.name)
+                        console.log(img_list);
+                    });
+                    this.on("error", function (file, data) {
+                        //上传失败触发的事件
+                        console.log('fail');
+                        var message = '';
+                        //lavarel框架有一个表单验证，
+                        //对于ajax请求，JSON 响应会发送一个 422 HTTP 状态码，
+                        //对应file.accepted的值是false，在这里捕捉表单验证的错误提示
+                        if (file.accepted) {
+                            $.each(data, function (key, val) {
+                                message = message + val[0] + ';';
+                            })
+                            //控制器层面的错误提示，file.accepted = true的时候；
+                            alert(message);
+                        }
+                    });
+                }
+            });
+
+
+            $(".post_product").on('click', function (e) {
+                e.preventDefault(e)
+                let post_data = new window.FormData();
+                let final_id = $("#new_id").val()
+                let detail = $(".ck-editor__editable_inline").html()
+                let name = $("#product-name").val()
+                let category = $("#category").val()
+                let link = []
+                console.log(detail)
+                if (detail === '') {
+                    $(".ck-editor__editable_inline").focus()
+                }
+                if (name === '') {
+                    $("#product-name").focus()
+                    alert("Product Name is empty!")
+                }
+                if (img_list.length === 0) {
+                    $("#dropz").focus()
+                    alert("You must upload at least one image!")
+                }
+                $(".video_link").each(function (index) {
+                    link[index] = $(this).val()
+                })
+                let route = name.trim().toLowerCase().replace(/ /g, "_")
+                post_data.append('final_id', final_id)
+                post_data.append('detail', detail);
+                post_data.append('name', name);
+                post_data.append('category', category)
+                post_data.append('link', link)
+                post_data.append('img_list', img_list)
+                if (name !== "" && detail !== "" && img_list.length !== 0) {
+                    $.ajax({
+                        async: true,
+                        url: '/staff/modify_product/' + route,
+                        method: 'POST',
+                        dataType: 'json',
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        data: post_data,
+                        success: function (response) {
+                            //如果想把后台返回回来的json对象转字符
+                            //用JSON.stringify(response)转字符
+                            if (response.id === 'success') {
+                                console.log(post_data)
+                                window.location.href = "/sanhe/product_detail/" + route
+                            }
+                            else (response.id === 'duplicate'){
+                                $("#product-name").focus()
+                                alert("Duplicate name, please enter a new one!")
+                            }
+                        }
+                    });
+                }
+            });
+        })
+
+
+    </script>
+    <script src="../../static/staff/dist/js/ckeditor-classic.js"></script>
+    <script src="../../static/staff/dist/js/edit_product.js"></script>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- content -->
+<div class="page-content bg-gray">
+    <section class="client">
+        <h2 class="color-white">Our Clients Include:</h2>
+        <div class="client--list">
+            <img class="client--list__logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/138941/am.png"
+                 alt="client logo"/>
+            <img class="client--list__logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/138941/ax.png"
+                 alt="client logo"/>
+            <img class="client--list__logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/138941/chl.png"
+                 alt="client logo"/>
+            <img class="client--list__logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/138941/fc.jpg"
+                 alt="client logo"/>
+            <img class="client--list__logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/138941/hsb.png"
+                 alt="client logo"/>
+            <img class="client--list__logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/138941/ib.png"
+                 alt="client logo"/>
+            <img class="client--list__logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/138941/api-cert.png"
+                 alt="client logo"/>
+        </div>
+    </section>
+</div>
+
+
+<style>
+    h2 {
+        font-weight: 300;
+        font-size: 1.6em;
+        margin: 1em auto;
+        font-family: "Montserrat", Helvetica, Arial, Sans-serif;
+        color: #0e395b;
+        margin: 0;
+        text-align: center;
+    }
+
+    @media (min-width: 40.001em) {
+        h2 {
+            font-size: 2.4em;
+        }
+    }
+
+    .color-white {
+        color: white !important;
+    }
+
+
+    section.client {
+        background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/138941/group-ipad.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        padding: 2em;
+    }
+
+    section .client--list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    section .client--list__logo {
+        width: 250px;
+        height: 100px;
+        margin: 1em auto;
+        filter: grayscale(1) invert(1) brightness(1.5);
+        mix-blend-mode: screen;
+    }
+
+
+</style>
+
+</body>
+</html>
